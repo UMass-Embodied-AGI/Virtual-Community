@@ -29,6 +29,9 @@ from tools.constants import ASSETS_PATH, LIGHTS, ENV_OTHER_METADATA
 from tools.utils import *
 from modules import *
 
+from agents.keystroke_counter import KeyCode, KeystrokeCounter
+from agents import Agent, UserControlledAgent, AgentLogger, get_agent_cls
+
 class VicoEnv:
 	def __init__(self,
 				 seed,
@@ -60,6 +63,7 @@ class VicoEnv:
 				 save_per_seconds=10,
 				 defer_chat=False,
 				 debug=False,
+				 user_controlled_index=None,
 				 dt_sim=0.01,
 				 batch_renderer=False):
 		if not gs._initialized:
@@ -96,6 +100,7 @@ class VicoEnv:
 		self.entity_idx_to_info = defaultdict(dict)
 		self.entity_idx_to_color = []
 		self.place_cameras = {}
+		self.user_controlled_index = int(user_controlled_index) if user_controlled_index is not None else None
 
 		self.config_path = config_path
 		self.config = json.load(open(os.path.join(self.config_path, 'config.json'), 'r'))
@@ -412,6 +417,26 @@ class VicoEnv:
 		}
 		step_info_path = os.path.join(self.config_path.replace('curr_sim', 'steps'), 'env', f"{self.steps:06d}.json")
 		atomic_save(step_info_path, json.dumps(step_info, indent=2, default=json_converter))
+
+
+	def setup_user_controlled_camera(self, agent_id):
+		"""Setup initial camera position for user-controlled agent"""
+		if not hasattr(self.scene, 'viewer') or self.scene.viewer is None:
+			self.logger.warning("No viewer available for camera setup")
+			return
+
+		agent = self.agents[agent_id]
+		agent_pos = agent.get_global_pose()[:3]
+
+		# Set third-person camera position (behind and above the agent)
+		camera_offset = np.array([-5.0, 0.0, 3.0])  # Behind, same Y, above
+		camera_pos = agent_pos + camera_offset
+
+		# Set camera to look at the agent
+		self.scene.viewer.set_camera_pose(
+			pos=camera_pos,
+			lookat=agent_pos
+		)
 
 	def scene_step(self, avatar_sim_early_end=False):
 		self.scene.step()
@@ -1230,6 +1255,8 @@ if __name__ == '__main__':
 	parser.add_argument("--config", type=str, default='agents_num_15')
 	parser.add_argument("--agent_type", type=str, choices=['tour_agent'], default='tour_agent')
 	parser.add_argument("--detect_interval", type=int, default=1)
+	parser.add_argument("--user_controlled_agent", type=str, default=None,
+					help="Single agent index to make user-controlled (e.g., '0' or '2')")
 
 	args = parser.parse_args()
 
@@ -1262,6 +1289,16 @@ if __name__ == '__main__':
 
 	os.makedirs(os.path.join(args.output_dir, 'logs'), exist_ok=True)
 
+	user_controlled_index = None
+	if args.user_controlled_agent:
+		try:
+			user_controlled_index = int(args.user_controlled_agent.strip())
+			print(f"User-controlled agent: {user_controlled_index}")
+			print("Basic controls: Up-arrow=Forward, Left-Arrow=Turn Left, Right-Arrow=Turn Right, P=Print Status, Q=Quit")
+		except ValueError:
+			print("Error: Invalid format for --user_controlled_agent. Use a single stringified integer.")
+			user_controlled_index = None
+
 	env = VicoEnv(
 		seed=args.seed,
 		precision=args.precision,
@@ -1293,6 +1330,7 @@ if __name__ == '__main__':
 		defer_chat=True,
 		debug=args.debug,
 		batch_renderer=args.batch_renderer,
+		user_controlled_index=user_controlled_index,
 	)
 	from agents import get_agent_cls, AgentProcess
 	agents = []
@@ -1306,12 +1344,27 @@ if __name__ == '__main__':
 			logging_level = args.logging_level,
 			multi_process = args.multi_process
 		)
-		if 'robot_agent_id_list' in config and i in config['robot_agent_id_list']:
-			robot_type = config['robot_types'][config['robot_agent_id_list'].index(i)]
-		else:
+		if i == user_controlled_index:
+			agent_type_for_this_agent = 'user_controlled_agent'
 			robot_type = None
-		agent_cls = get_agent_cls(agent_type=args.agent_type, robot_type=robot_type)
-		agents.append(AgentProcess(agent_cls, **basic_kwargs, tour_spatial_memory=env.building_metadata))
+			print(f"Agent {i} ({env.agent_names[i]}) set to user-controlled")
+		else:
+			agent_type_for_this_agent = args.agent_type
+			if 'robot_agent_id_list' in config and i in config['robot_agent_id_list']:
+				robot_type = config['robot_types'][config['robot_agent_id_list'].index(i)]
+			else:
+				robot_type = None
+
+		agent_cls = get_agent_cls(agent_type=agent_type_for_this_agent, robot_type=robot_type)
+
+		# Only pass tour_spatial_memory to agents that need it (not UserControlledAgent)
+		if agent_type_for_this_agent == 'user_controlled_agent':
+			agents.append(AgentProcess(agent_cls, **basic_kwargs))
+		else:
+			agents.append(AgentProcess(agent_cls, **basic_kwargs, tour_spatial_memory=env.building_metadata))
+
+	if user_controlled_index is not None:
+		env.setup_user_controlled_camera(user_controlled_index)
 
 	if args.multi_process:
 		gs.logger.info("Start agent processes")
@@ -1325,34 +1378,94 @@ if __name__ == '__main__':
 	agent_actions = {}
 	agent_actions_to_print = {}
 	args.max_steps = args.max_seconds // env.sec_per_step
-	while True:
-		lst_time = time.perf_counter()
-		for i, agent in enumerate(agents):
-			if i in agent_list_to_update:
-				agent.update(obs[i])
-		for i, agent in enumerate(agents):
-			if i in agent_list_to_update:
-				agent_actions[i] = agent.act()
-				agent_actions_to_print[agent.name] = agent_actions[i]['type'] if agent_actions[i] is not None else None
-				if agent_actions[i] is not None and agent_actions[i]['type'] == 'converse':
-					agent_actions[i]['request_chat_func'] = agent.request_chat
-					agent_actions[i]['get_utterance_func'] = agent.get_utterance
-		agent_actions['agent_list_to_update'] = agent_list_to_update
 
-		gs.logger.info(f"current time: {env.curr_time}, ViCo steps: {env.steps}, agents actions: {agent_actions_to_print}")
-		sps_agent = time.perf_counter() - lst_time
-		env.config["sps_agent"] = (env.config["sps_agent"] * env.steps + sps_agent) / (env.steps + 1)
-		lst_time = time.perf_counter()
-		obs, _, done, info = env.step(agent_actions)
-		agent_list_to_update = obs.pop('agent_list_to_update')
-		sps_sim = time.perf_counter() - lst_time
-		env.config["sps_sim"] = (env.config["sps_sim"] * (env.steps - 1) + sps_sim) / max(env.steps, 1)
-		gs.logger.info(f"Time used: {sps_agent:.2f}s for agents, {sps_sim:.2f}s for simulation, "
-					   f"average {env.config['sps_agent']:.2f}s for agents, "
-					   f"{env.config['sps_sim']:.2f}s for simulation, "
-					   f"{env.config['sps_chat']:.2f}s for post-chatting over {env.steps} steps.")
-		if env.steps > args.max_steps:
-			break
+	# Helper function to update user-controlled camera
+	def update_user_camera(agent_index):
+		"""Update camera position for user-controlled agent"""
+		agent = env.agents[agent_index]
+		agent_pos = agent.get_global_pose()[:3]
+		agent_rotation = agent.robot.global_rot  # 3x3 rotation matrix
+		
+		# Get the agent's forward direction (first column of rotation matrix)
+		forward_dir = agent_rotation[:, 0]
+		
+		# Camera offset relative to agent (behind and above)
+		camera_distance = 5.0
+		camera_height = 3.0
+		camera_pos = agent_pos - forward_dir * camera_distance + np.array([0, 0, camera_height])
+		
+		# Calculate lookat point: in front of the agent
+		lookat_distance = 3.0
+		lookat_pos = agent_pos + forward_dir * lookat_distance + np.array([0, 0, 1.0])
+		
+		env.scene.viewer.set_camera_pose(pos=camera_pos, lookat=lookat_pos)
+
+	# Initialize keystroke counter if user control is enabled
+	key_counter = KeystrokeCounter() if user_controlled_index is not None else None
+	if key_counter:
+		key_counter.__enter__()
+	
+	try:
+		while True:
+			lst_time = time.perf_counter()
+			
+			# Handle key presses for user-controlled agent 
+			if key_counter is not None:
+				press_events = key_counter.get_press_events()
+				if press_events:
+					# Check for global quit command
+					quit_requested = False
+					for key_stroke in press_events:
+						if key_stroke == KeyCode(char='q'):
+							print("Quit requested by user (Q key pressed)")
+							quit_requested = True
+							break
+					
+					if quit_requested:
+						break
+					
+					# Send key events to user-controlled agent
+					if not args.multi_process and hasattr(agents[user_controlled_index], 'agent'):
+						agents[user_controlled_index].agent.set_key_events(press_events)
+			
+			# Regular agent processing
+			for i, agent in enumerate(agents):
+				if i in agent_list_to_update:
+					agent.update(obs[i])
+			
+			for i, agent in enumerate(agents):
+				if i in agent_list_to_update:
+					agent_actions[i] = agent.act()
+					agent_actions_to_print[agent.name] = agent_actions[i]['type'] if agent_actions[i] is not None else None
+					if agent_actions[i] is not None and agent_actions[i]['type'] == 'converse':
+						agent_actions[i]['request_chat_func'] = agent.request_chat
+						agent_actions[i]['get_utterance_func'] = agent.get_utterance
+			
+			agent_actions['agent_list_to_update'] = agent_list_to_update
+
+			gs.logger.info(f"current time: {env.curr_time}, ViCo steps: {env.steps}, agents actions: {agent_actions_to_print}")
+			sps_agent = time.perf_counter() - lst_time
+			env.config["sps_agent"] = (env.config["sps_agent"] * env.steps + sps_agent) / (env.steps + 1)
+			lst_time = time.perf_counter()
+			obs, _, done, info = env.step(agent_actions)
+			agent_list_to_update = obs.pop('agent_list_to_update')
+
+			# Update camera for user-controlled agent
+			if user_controlled_index is not None:
+				update_user_camera(user_controlled_index)
+
+			sps_sim = time.perf_counter() - lst_time
+			env.config["sps_sim"] = (env.config["sps_sim"] * (env.steps - 1) + sps_sim) / max(env.steps, 1)
+			gs.logger.info(f"Time used: {sps_agent:.2f}s for agents, {sps_sim:.2f}s for simulation, "
+						f"average {env.config['sps_agent']:.2f}s for agents, "
+						f"{env.config['sps_sim']:.2f}s for simulation, "
+						f"{env.config['sps_chat']:.2f}s for post-chatting over {env.steps} steps.")
+			
+			if env.steps > args.max_steps:
+				break
+	finally:
+		if key_counter:
+			key_counter.__exit__(None, None, None)
 
 	for agent in agents:
 		agent.close()

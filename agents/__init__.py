@@ -1,4 +1,5 @@
 from .agent import Agent, AgentLogger, AgentProcess
+from .user_controlled_agent import UserControlledAgent, KeystrokeCounter
 
 def get_agent_cls(agent_type, robot_type=None):
     if agent_type == 'tour_agent':
@@ -22,5 +23,7 @@ def get_agent_cls(agent_type, robot_type=None):
             return DroneTourAgent
         else:
             raise NotImplementedError
+    elif agent_type == 'user_controlled_agent':
+        return UserControlledAgent   
     else:
         raise NotImplementedError
