@@ -4,6 +4,7 @@ import traceback
 from collections import defaultdict
 current_directory = os.getcwd()
 sys.path.insert(0, current_directory)
+from tools.utils import get_assets_dir
 
 import argparse
 import logging
@@ -208,7 +209,7 @@ def add_room_camera(x_l, x_r, y_l, y_r, z_l=0, z_r=3.5):
     return [pose0, pose1, pose2, pose3, pose4]
 
 def load_indoor_scene(env, place, offset_x=0, offset_y=0, offset_z=0, size_x=30, size_y=30, no_objects=False):
-    cwd = os.path.join(gs.utils.get_assets_dir(), 'ViCo')
+    cwd = os.path.join(get_assets_dir(), 'ViCo')
     if not os.path.exists(os.path.join(cwd, 'objects')):
         raise Exception("Please follow the README to download objects and extract it to the assets folder")
  

@@ -18,7 +18,7 @@ import numpy as np
 import genesis as gs
 import genesis.utils.geom as geom_utils
 import glob
-from genesis.utils import get_assets_dir
+from tools.utils import get_assets_dir
 from utils import load_height_field, get_height_at
 # from modules.avatar.avatar_robot import AvatarRobot
 
@@ -233,8 +233,6 @@ def render_scene(scene, cameras, output_dir="rendered_output"):
             print(f"Warning: Failed to render RGB image for camera {i}")
     
     print(f"Rendering complete! Images saved to: {output_dir}")
-
-# /scratch/workspace/tchafekar_umass_edu-tchafekar/Ella/vico/Genesis/genesis/assets/ViCo/scene/v1/NY/buildings/buildings_Courtyard Marriot.glb
 
 def main():
     parser = argparse.ArgumentParser(description="Render scene from config.json using agent poses")

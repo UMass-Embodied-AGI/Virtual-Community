@@ -97,7 +97,7 @@ class OutdoorObjectContext:
     def __post_init__(self):
         self.random_state = random.Random(self.seed)
         self.np_random_state = np.random.RandomState(self.seed)
-        self.objects_cfg_dir = os.path.join(gs.utils.get_assets_dir(), self.objects_cfg_dir)
+        self.objects_cfg_dir = os.path.join(get_assets_dir(), self.objects_cfg_dir)
 
         #* Load center location info
         self.center_location_info_path = os.path.join(
@@ -110,7 +110,7 @@ class OutdoorObjectContext:
         #* Load terrain height field
         if not self.terrain_height_field_path:
             self.terrain_height_field_path = f'{self.assets_dir}/height_field.npz'
-        self.terrain_height_field_path = os.path.join(gs.utils.get_assets_dir(), self.terrain_height_field_path)
+        self.terrain_height_field_path = os.path.join(get_assets_dir(), self.terrain_height_field_path)
         # assert os.path.exists(self.terrain_height_field_path), f'Terrain height field not found at {self.terrain_height_field_path}'
         self.terrain_height_field = None
         if os.path.exists(self.terrain_height_field_path):
@@ -232,7 +232,7 @@ class OutdoorObjectContext:
             height = (height, height)
         
         import trimesh
-        mesh = trimesh.load_mesh(os.path.join(gs.utils.get_assets_dir(), obj_info['path']))
+        mesh = trimesh.load_mesh(os.path.join(get_assets_dir(), obj_info['path']))
         bbox = mesh.bounding_box.bounds
         obj_height = bbox[1][1] - bbox[0][1]
         rescaled_obj_height = np.clip(obj_height, height[0], height[1])

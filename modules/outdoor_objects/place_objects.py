@@ -24,6 +24,8 @@ def place_mesh(
 	vis_mode: Optional[str] = None,
 ):
 	rotation = compose_euler(rotation, np.array([90.0, 0, 0]), unit='deg')
+	if not os.path.isabs(path):
+		path = os.path.join(get_assets_dir(), path)
 
 	x = env.add_entity(
 		type='object',

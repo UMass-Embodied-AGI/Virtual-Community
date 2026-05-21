@@ -1,6 +1,7 @@
-python env.py --head_less \
---backend gpu \
+python env.py \
+--backend cpu \
 --skip_avatar_animation \
+--no_load_indoor_scene \
 --scene NY \
 --resolution 512 \
 --num_agents 15 \

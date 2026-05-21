@@ -21,7 +21,7 @@ cost-logs
 Genesis/**/*.pkl
 *.egg-info*
 logs
-Genesis/genesis/assets/ViCo
+assets/ViCo
 chat_raw*.jsonl
 assets/scenes/*/raw/
 assets/scenes/*/gpt_cache/

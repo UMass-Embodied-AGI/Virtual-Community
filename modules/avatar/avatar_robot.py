@@ -1,7 +1,11 @@
+import os
 import numpy as np
 import genesis as gs
 import genesis.utils.geom as geom_utils
 from .utils import *
+import sys
+sys.path.insert(0, os.getcwd())
+from tools.utils import get_assets_dir
 
 from scipy.spatial.transform import Rotation as R
 
@@ -25,12 +29,15 @@ class AvatarRobot:
         self.joint_num = SMPLX_JOINT_NUM
 
         if skin_options is not None:
+            glb_path = skin_options['glb_path']
+            if not os.path.isabs(glb_path):
+                glb_path = os.path.join(get_assets_dir(), glb_path)
             self.skin = env.add_entity(
                 type="avatar",
                 name=name,
                 material=mat_avatar,
                 morph=gs.morphs.Mesh(
-                    file=skin_options['glb_path'],
+                    file=glb_path,
                     euler=skin_options['euler'],
                     pos=skin_options['pos'],
                     decimate=False,

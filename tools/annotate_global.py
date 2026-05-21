@@ -204,7 +204,7 @@ if __name__ == '__main__':
     final_folder_mapping = {"newyork": "NY", "elpaso": "EL_PASO_ok"}
     if args.scene not in final_folder_mapping:
         final_folder_mapping[args.scene] = args.scene.upper()
-    height_field_path=f"Genesis/genesis/assets/ViCo/scene/v1/{final_folder_mapping[args.scene]}/height_field.npz"
+    height_field_path=os.path.join(get_assets_dir(), f"ViCo/scene/v1/{final_folder_mapping[args.scene]}/height_field.npz")
     
     if os.path.exists(height_field_path):
         print("Necessary file check passed: height_field.npz")

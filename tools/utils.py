@@ -18,6 +18,9 @@ from collections import defaultdict
 import math
 from multiprocessing import Lock
 
+def get_assets_dir():
+	return os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets")
+
 _saving_lock = Lock()
 _saving_map_lock = {}
 def atomic_save(file_path: str, data: Union[str, bytes, Image.Image]):

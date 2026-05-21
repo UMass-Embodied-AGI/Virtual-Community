@@ -754,7 +754,7 @@ def get_building_to_places():
 			}
 		import genesis as gs
 		if building_name != "open space":
-			mesh = trimesh.load(os.path.join(gs.utils.get_assets_dir(), scene_assets_dir, 'buildings', "buildings_" + building_name + ".glb"))
+			mesh = trimesh.load(os.path.join(get_assets_dir(), scene_assets_dir, 'buildings', "buildings_" + building_name + ".glb"))
 			rotation_matrix = trimesh.transformations.rotation_matrix(np.deg2rad(90.0), [1, 0, 0])
 			mesh.apply_transform(rotation_matrix)
 			obb = mesh.bounding_box_oriented
@@ -895,7 +895,7 @@ def load_city_scene(scene, scene_assets_dir):
 			group_by_material=True,
 		),
 	)
-	buildings_dir = str(os.path.join(gs.utils.get_assets_dir(), scene_assets_dir, 'buildings'))
+	buildings_dir = str(os.path.join(get_assets_dir(), scene_assets_dir, 'buildings'))
 	print(buildings_dir)
 	if os.path.exists(buildings_dir):
 		gs.logger.info(f"Loading buildings separately")
@@ -997,7 +997,7 @@ if __name__ == '__main__':
 		#     exit()
 
 		# Also check height field, despite not used for annotating the scene (used in character generation)
-		height_field_path=f"Genesis/genesis/assets/ViCo/scene/v1/{args.scene}/height_field.npz"
+		height_field_path=os.path.join(get_assets_dir(), f"ViCo/scene/v1/{args.scene}/height_field.npz")
 
 		if os.path.exists(height_field_path):
 			print("Necessary file check passed: height_field.npz")
@@ -1126,7 +1126,7 @@ if __name__ == '__main__':
 		if args.generate_metadata:
 			# Generate a new json file containing bounding boxes of all loaded buildings
 			all_loaded_building_bboxes = []
-			buildings_dir = os.path.join(gs.utils.get_assets_dir(), scene_assets_dir, 'buildings')
+			buildings_dir = os.path.join(get_assets_dir(), scene_assets_dir, 'buildings')
 			if os.path.exists(buildings_dir):
 				for building in os.listdir(buildings_dir):
 					if building.endswith('.glb'):
@@ -1235,7 +1235,7 @@ if __name__ == '__main__':
 	# 		if '/' in building_glb_after_buildings_:
 	# 			building_metadata[building]["building_glb"] = building_metadata[building]["building_glb"].split('buildings_')[0] + "buildings_" + building_glb_after_buildings_.replace('/', '_')
 	# 	if "bounding_box" in building_metadata[building] and building_metadata[building]["bounding_box"] is not None:
-	# 		mesh = trimesh.load(os.path.join(gs.utils.get_assets_dir(), scene_assets_dir, 'buildings', building_metadata[building]["building_glb"]))
+	# 		mesh = trimesh.load(os.path.join(get_assets_dir(), scene_assets_dir, 'buildings', building_metadata[building]["building_glb"]))
 	# 		rotation_matrix = trimesh.transformations.rotation_matrix(np.deg2rad(90.0), [1, 0, 0])
 	# 		mesh.apply_transform(rotation_matrix)
 	# 		obb = mesh.bounding_box_oriented

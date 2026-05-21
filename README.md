@@ -63,20 +63,19 @@ Virtual Community is an open-world platform that simulates human-robot coexisten
 
 ### Installation
 
-We're using python 3.11, cuda 11.7 and ubuntu 24.04. If you are using a different version, please modify the env.yaml file accordingly.
+We're using Python 3.11, CUDA 11.7 and Ubuntu 24.04. If you are using a different version, please modify the `pyproject.toml` accordingly.
+
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/) if you haven't already.
+
+Install all dependencies:
 
 ```bash
-conda env create -f env.yaml
+uv sync
 ```
 
-Install Genesis from the source:
+This creates a virtual environment, installs PyTorch (CUDA 11.7) from the PyTorch index, and fetches Genesis at the pinned commit — all automatically.
 
-```bash
-cd Genesis
-pip install -e .
-```
-
-To run the example tour agent, install volume grid lib:
+To run the example tour agent, also install the volume grid lib:
 
 ```bash
 cd agents/sg
@@ -85,7 +84,7 @@ cd agents/sg
 
 ### Assets Preparation
 
-Download the assets from the [Google Drive](https://drive.google.com/drive/u/2/folders/15XR80efNfgdpYi-5dXh3lJ35p9WBqFc5) and organize them under `Genesis/genesis/assets/ViCo`.
+Download the assets from the [Google Drive](https://drive.google.com/drive/u/2/folders/15XR80efNfgdpYi-5dXh3lJ35p9WBqFc5) and organize them under `assets/ViCo`.
 
 Assets include:
 - `scene` folder: contains the generated outdoor 3D scenes.
@@ -99,7 +98,7 @@ If you want to use indoor scenes from GRUTopia (otherwise use `--no_load_indoor_
 After this step, the directory structure should be:
 
 ```
-Genesis/genesis/assets/ViCo/
+assets/ViCo/
 ├── scene/
 ├──── v1/
 ├──── commercial_scenes/ (optional)
@@ -143,9 +142,15 @@ Tips: Loading all indoor scenes and objects may take around 40G memory. If you e
 
 If you encounter any issues, please check the following:
 
-`libstdcxx. so.6: version GLIBCXX 3.4.32’not found required by  sg/builder/builtin/libbuider.so)`
+`libstdcxx.so.6: version GLIBCXX_3.4.32 not found (required by sg/builder/builtin/libbuider.so)`
 
-To resolve this issue, you may need to update your GCC runtime. You can do this by running:
+To resolve this issue, you may need to update your GCC runtime. On Ubuntu/Debian:
+
+```bash
+sudo apt install --only-upgrade libstdc++6
+```
+
+Alternatively, install an updated runtime via conda-forge (without activating a full conda environment):
 
 ```bash
 conda install -c conda-forge libstdcxx-ng

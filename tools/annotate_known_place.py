@@ -270,7 +270,7 @@ if __name__ == "__main__":
         middle_path = os.path.join(f"{args.scene}", "events", args.event)
     args.output_dir = f"assets/scenes/{middle_path}/agents_num_{args.num_characters}"
 
-    height_field_path = f"Genesis/genesis/assets/ViCo/scene/v1/{args.scene}/height_field.npz"
+    height_field_path = os.path.join(get_assets_dir(), f"ViCo/scene/v1/{args.scene}/height_field.npz")
     height_field = load_height_field(height_field_path)
     global_cam_parameters = json.load(open(f"assets/scenes/{args.scene}/global_cam_parameters.json", 'r'))
 

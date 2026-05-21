@@ -4,7 +4,7 @@ import genesis as gs
 import psutil
 import json
 import numpy as np
-from genesis.utils.misc import get_assets_dir
+from tools.utils import get_assets_dir
 current_directory = os.getcwd()
 sys.path.insert(0, current_directory)
 from modules.indoor_scenes.usd_scene import place_usd_scene_with_ratio

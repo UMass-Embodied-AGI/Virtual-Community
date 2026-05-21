@@ -2,7 +2,7 @@ import os
 import torch
 import numpy as np
 from abc import ABC, abstractmethod
-from genesis.utils.misc import get_assets_dir
+from tools.utils import get_assets_dir
 from tools.utils import load_height_field
 import pickle
 

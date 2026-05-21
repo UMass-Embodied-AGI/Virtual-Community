@@ -1,6 +1,9 @@
 import math
 import requests
 import os
+import sys
+sys.path.insert(0, os.getcwd())
+from tools.utils import get_assets_dir
 import argparse
 import json
 import yaml
@@ -281,9 +284,11 @@ if __name__ == '__main__':
     parser.add_argument('--scene', type=str, required=True, help='Scene name')
     parser.add_argument('--parser_cfg_path', type=str, default='modules/outdoor_objects/parser_config.yaml', help='Path to the groups configuration file')
     parser.add_argument('--assets_cfg_path', type=str, default='modules/outdoor_objects/assets_config.yaml', help='Path to the assets configuration file')
-    parser.add_argument('--output_dir', type=str, default='Genesis/genesis/assets/ViCo/scene/v1/DETROIT/objects', help='Directory to save the generated object placement configurations')
+    parser.add_argument('--output_dir', type=str, default=None, help='Directory to save the generated object placement configurations')
     args = parser.parse_args()
-    scene_assets_dir = os.path.join("Genesis/genesis/assets/ViCo/scene/v1", args.scene)
+    if args.output_dir is None:
+        args.output_dir = os.path.join(get_assets_dir(), f"ViCo/scene/v1/{args.scene}/objects")
+    scene_assets_dir = os.path.join(get_assets_dir(), "ViCo/scene/v1", args.scene)
     parse_osm(
         scene=args.scene, 
         scene_assets_dir=scene_assets_dir,

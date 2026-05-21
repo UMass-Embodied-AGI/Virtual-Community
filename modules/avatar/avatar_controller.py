@@ -7,7 +7,8 @@ import numpy as np
 import pickle as pkl
 import genesis as gs
 import genesis.utils.geom as geom_utils
-from genesis.utils.misc import get_assets_dir, get_cvx_cache_dir
+from genesis.utils.misc import get_cvx_cache_dir
+from tools.utils import get_assets_dir
 
 from .utils import *
 from tools.utils import *

@@ -792,7 +792,7 @@ if __name__ == '__main__':
     final_folder_mapping = {"newyork": "NY_ok", "elpaso": "EL_PASO_ok"}
     if args.scene not in final_folder_mapping:
         final_folder_mapping[args.scene] = args.scene.upper() + "_ok"
-    terrain_height_path=f"Genesis-dev/genesis/assets/ViCo/scene/final/{final_folder_mapping[args.scene]}/height_field.npz"
+    terrain_height_path=os.path.join(get_assets_dir(), f"ViCo/scene/final/{final_folder_mapping[args.scene]}/height_field.npz")
     
     if os.path.exists(terrain_height_path):
         print("Necessary file check passed: height_field.npz")
@@ -842,7 +842,7 @@ if __name__ == '__main__':
             show_FPS=False,
         )
 
-        load_city_scene(gs_scene, f"Genesis-dev/genesis/assets/ViCo/scene/final/{final_folder_mapping[args.scene]}")
+        load_city_scene(gs_scene, os.path.join(get_assets_dir(), f"ViCo/scene/final/{final_folder_mapping[args.scene]}"))
 
         global_cam = gs_scene.add_camera(
             res=(2000, 2000),

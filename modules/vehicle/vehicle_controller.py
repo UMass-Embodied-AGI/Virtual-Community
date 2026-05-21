@@ -6,7 +6,6 @@ import time
 
 import genesis as gs
 import genesis.utils.geom as geom_utils
-from genesis.utils.misc import get_assets_dir
 
 from tools.utils import *
 

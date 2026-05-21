@@ -1021,7 +1021,7 @@ if __name__ == "__main__":
                 shutil.rmtree(item_path)
         # shutil.rmtree(args.output_dir)
 
-    height_field_path = f"Genesis/genesis/assets/ViCo/scene/v1/{args.scene}/height_field.npz"
+    height_field_path = os.path.join(get_assets_dir(), f"ViCo/scene/v1/{args.scene}/height_field.npz")
     height_field = load_height_field(height_field_path)
     print("Loaded height field.")
 

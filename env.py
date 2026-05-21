@@ -1,5 +1,7 @@
 import logging
 import os
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning, module="pygltflib")
 import sys
 import time
 import shutil, errno
@@ -12,7 +14,8 @@ import tqdm
 from gymnasium import Env, spaces
 import genesis as gs
 from genesis.utils.tools import FPSTracker
-from genesis.utils.misc import tensor_to_array, get_assets_dir
+from genesis.utils.misc import tensor_to_array
+from tools.utils import get_assets_dir
 import genesis.utils.geom as geom_utils
 from genesis.options import CoacdOptions
 from genesis.engine.entities.rigid_entity import RigidEntity
@@ -133,7 +136,7 @@ class VicoEnv:
 		self.obs = {i: {} for i in range(self.num_agents)}
 		self.obs['agent_list_to_update'] = [i for i in range(self.num_agents)]
 
-		self.scene_assets_dir = f"ViCo/scene/v1/{scene}"
+		self.scene_assets_dir = os.path.join(get_assets_dir(), f"ViCo/scene/v1/{scene}")
 		self.vehicles = []
 		self.enable_tm_debug = enable_tm_debug
 
@@ -209,7 +212,7 @@ class VicoEnv:
 			os.makedirs(os.path.join(self.output_dir, 'demo'), exist_ok=True)
 		self.terrain = self.load_city_scene(self.scene_assets_dir, no_load_scene)
 		self.height_field = load_height_field(
-			os.path.join(gs.utils.get_assets_dir(), f"{self.scene_assets_dir}/height_field.npz"))
+			os.path.join(self.scene_assets_dir, "height_field.npz"))
 		gs.logger.info(f"loading city scene took {time.time() - start_time:.2f}s")
 
 		if not no_load_scene and self.terrain is not None:
@@ -532,7 +535,7 @@ class VicoEnv:
 
 	def load_city_scene(self, scene_assets_dir, no_load_scene):
 		height_field = load_height_field(
-			os.path.join(gs.utils.get_assets_dir(), f"{scene_assets_dir}/height_field.npz"))
+			os.path.join(scene_assets_dir, "height_field.npz"))
 		ratio = 5
 		X = np.arange(-500, 501, ratio)
 		Y = np.arange(-500, 501, ratio)
@@ -568,7 +571,7 @@ class VicoEnv:
 				group_by_material=True,
 			),
 		)
-		buildings_dir = str(os.path.join(gs.utils.get_assets_dir(), scene_assets_dir, 'buildings'))
+		buildings_dir = str(os.path.join(scene_assets_dir, 'buildings'))
 		building_glb2name = {}
 		for building_name in self.building_metadata:
 			if building_name != 'open space':
