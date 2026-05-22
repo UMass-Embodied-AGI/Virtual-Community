@@ -5,9 +5,9 @@ from .keystroke_counter import KeyCode, KeystrokeCounter
 
 
 class UserControlledAgent(Agent):
-    """Agent that can be controlled by user input - using arrow keys and IJK keys."""
-    
-    def __init__(self, name, pose, info, sim_path, no_react=False, debug=False, logger=None, 
+    """Agent controlled by user input, moving forward autonomously when idle."""
+
+    def __init__(self, name, pose, info, sim_path, tour_spatial_memory=None, no_react=False, debug=False, logger=None,
                  move_speed=1.0, turn_speed=45.0):
         super().__init__(name, pose, info, sim_path, no_react, debug, logger)
         
@@ -147,8 +147,7 @@ class UserControlledAgent(Agent):
             except queue.Empty:
                 pass
             
-        # Default to waiting if no user input
-        return {'type': 'wait'}
+        return {'type': 'move_forward', 'arg1': self.move_speed}
         
     def _process_obs(self, obs):
         """Process observations"""

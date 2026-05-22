@@ -1,5 +1,5 @@
 python env.py \
---backend gpu \
+--backend cpu \
 --scene NY \
 --no_load_indoor_scene \
 --no_load_outdoor_objects \

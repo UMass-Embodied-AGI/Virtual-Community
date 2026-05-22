@@ -93,7 +93,7 @@ Assets include:
 - `avatars` folder: contains the human avatars' skin and motion.
 - `cars` folder: contains the vehicle models including car, bus, bike, etc.
 
-If you want to use indoor scenes from GRUTopia (otherwise use `--no_load_indoor_scene` flag), please follow their instructions [here](https://github.com/OpenRobotLab/GRUtopia?tab=readme-ov-file#%EF%B8%8F-assets) to download the commercial_scenes.zip, and unzip it under `Genesis/genesis/assets/ViCo/scene/`.
+If you want to use indoor scenes from GRUTopia (otherwise use `--no_load_indoor_scene` flag), please follow their instructions [here](https://github.com/OpenRobotLab/GRUtopia?tab=readme-ov-file#%EF%B8%8F-assets) to download the commercial_scenes.zip, and unzip it under `assets/ViCo/scene/`.
 
 After this step, the directory structure should be:
 
@@ -117,6 +117,28 @@ Run the following script to test the simulation, where 15 agents will tour aroun
 ```
 
 Tips: Loading all indoor scenes and objects may take around 40G memory. If you encounter memory issues, consider adding `--no_load_indoor_scene` flag to the script to disable indoor scenes.
+
+### User-Controlled Agent
+
+You can take direct control of one agent in the simulation using keyboard input:
+
+```bash
+./scripts/run_controlled_agent.sh
+```
+
+This spawns a 15-agent simulation where agent `0` is controlled by you. Controls:
+
+| Key | Action |
+|-----|--------|
+| `↑` | Move forward |
+| `←` | Turn left |
+| `→` | Turn right |
+| `B` | Pick up object |
+| `N` | Put down object |
+| `M` | Enter / exit bus |
+| `<` | Enter / exit bike |
+| `>` | Enter / exit building |
+| `P` | Print agent status |
 
 ### System Requirements
 

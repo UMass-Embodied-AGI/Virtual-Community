@@ -146,6 +146,7 @@ dependencies = [
     "z3-solver==4.15.0.0",
     "zipp==3.21.0",
     "genesis-world",
+    "pynput>=1.8.2",
 ]
 
 [tool.uv]

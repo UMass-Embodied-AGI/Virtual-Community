@@ -30,7 +30,7 @@ from tools.utils import *
 from modules import *
 
 from agents.keystroke_counter import KeyCode, KeystrokeCounter
-from agents import Agent, UserControlledAgent, AgentLogger, get_agent_cls
+from agents import get_agent_cls
 
 class VicoEnv:
 	def __init__(self,
@@ -1357,11 +1357,7 @@ if __name__ == '__main__':
 
 		agent_cls = get_agent_cls(agent_type=agent_type_for_this_agent, robot_type=robot_type)
 
-		# Only pass tour_spatial_memory to agents that need it (not UserControlledAgent)
-		if agent_type_for_this_agent == 'user_controlled_agent':
-			agents.append(AgentProcess(agent_cls, **basic_kwargs))
-		else:
-			agents.append(AgentProcess(agent_cls, **basic_kwargs, tour_spatial_memory=env.building_metadata))
+		agents.append(AgentProcess(agent_cls, **basic_kwargs, tour_spatial_memory=env.building_metadata))
 
 	if user_controlled_index is not None:
 		env.setup_user_controlled_camera(user_controlled_index)
@@ -1401,9 +1397,27 @@ if __name__ == '__main__':
 		env.scene.viewer.set_camera_pose(pos=camera_pos, lookat=lookat_pos)
 
 	# Initialize keystroke counter if user control is enabled
-	key_counter = KeystrokeCounter() if user_controlled_index is not None else None
-	if key_counter:
-		key_counter.__enter__()
+	key_counter = None
+	if user_controlled_index is not None:
+		_ax_trusted = True
+		if sys.platform == 'darwin':
+			try:
+				from ApplicationServices import AXIsProcessTrusted
+				_ax_trusted = AXIsProcessTrusted()
+			except Exception:
+				_ax_trusted = True  # can't check, try anyway
+		if not _ax_trusted:
+			gs.logger.warning("Keyboard listener requires Accessibility permission on macOS.")
+			gs.logger.warning("Go to: System Settings → Privacy & Security → Accessibility → add Terminal.app")
+			gs.logger.warning("User control disabled — running in observe-only mode.")
+		else:
+			try:
+				key_counter = KeystrokeCounter()
+				key_counter.__enter__()
+				gs.logger.info("Keyboard listener started. Use arrow keys to control the agent.")
+			except Exception as e:
+				gs.logger.warning(f"Failed to start keyboard listener: {e}")
+				gs.logger.warning("User control disabled — running in observe-only mode.")
 	
 	try:
 		while True:
@@ -1425,8 +1439,11 @@ if __name__ == '__main__':
 						break
 					
 					# Send key events to user-controlled agent
+					gs.logger.debug(f"Key events: {press_events}")
 					if not args.multi_process and hasattr(agents[user_controlled_index], 'agent'):
 						agents[user_controlled_index].agent.set_key_events(press_events)
+					else:
+						gs.logger.warning(f"Key events not dispatched: multi_process={args.multi_process}, has_agent={hasattr(agents[user_controlled_index], 'agent')}")
 			
 			# Regular agent processing
 			for i, agent in enumerate(agents):
