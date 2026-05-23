@@ -1414,7 +1414,7 @@ if __name__ == '__main__':
 			try:
 				key_counter = KeystrokeCounter()
 				key_counter.__enter__()
-				gs.logger.info("Keyboard listener started. Use arrow keys to control the agent.")
+				gs.logger.info("Keyboard listener started (subprocess). Use arrow keys to control the agent.")
 			except Exception as e:
 				gs.logger.warning(f"Failed to start keyboard listener: {e}")
 				gs.logger.warning("User control disabled — running in observe-only mode.")

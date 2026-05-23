@@ -71,6 +71,7 @@ Install all dependencies:
 
 ```bash
 uv sync
+source .venv/bin/activate
 ```
 
 This creates a virtual environment, installs PyTorch (CUDA 11.7) from the PyTorch index, and fetches Genesis at the pinned commit — all automatically.
