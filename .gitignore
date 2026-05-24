@@ -21,11 +21,10 @@ cost-logs
 Genesis/**/*.pkl
 *.egg-info*
 logs
-assets/ViCo
+vico/assets/ViCo
 chat_raw*.jsonl
-assets/scenes/*/raw/
-assets/scenes/*/gpt_cache/
-assets/scenes/*/agents_num_15_with_schedules
-assets/imgs/*
-!assets/imgs/teaser.png
-!assets/imgs/avatars/
+vico/assets/scenes/*/raw/
+vico/assets/scenes/*/gpt_cache/
+vico/assets/scenes/*/agents_num_15_with_schedules
+vico/assets/imgs/*
+!vico/assets/imgs/avatars/

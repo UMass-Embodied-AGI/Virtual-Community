@@ -56,7 +56,8 @@ Virtual Community is an open-world platform that simulates human-robot coexisten
 
 ## News
 
-- [2025-05-23] Virtual Community now supports user controlled agents and switches to uv for project management.
+- [2026-05-24] Codebase restructured into the `vico` Python package; assets moved to `vico/assets/`.
+- [2025-05-23] Virtual Community now supports user controlled agents and improves project structure for easier development [uv management and importable vico package].
 - [2026-01-26] Virtual Community is accepted by ICLR 2026.
 - [2025-06-19] We have released the Virtual Community! Check out the [project website](https://virtual-community-ai.github.io/) and our [paper](https://virtual-community-ai.github.io/paper.pdf) for more details.
 
@@ -80,13 +81,13 @@ This creates a virtual environment, installs PyTorch (CUDA 11.7) from the PyTorc
 To run the example tour agent, also install the volume grid lib:
 
 ```bash
-cd agents/sg
+cd vico/agents/sg
 ./setup.sh
 ```
 
 ### Assets Preparation
 
-Download the assets from the [Google Drive](https://drive.google.com/drive/u/2/folders/15XR80efNfgdpYi-5dXh3lJ35p9WBqFc5) and organize them under `assets/ViCo`.
+Download the assets from the [Google Drive](https://drive.google.com/drive/u/2/folders/15XR80efNfgdpYi-5dXh3lJ35p9WBqFc5) and organize them under `vico/assets/ViCo`.
 
 Assets include:
 - `scene` folder: contains the generated outdoor 3D scenes.
@@ -95,12 +96,12 @@ Assets include:
 - `avatars` folder: contains the human avatars' skin and motion.
 - `cars` folder: contains the vehicle models including car, bus, bike, etc.
 
-If you want to use indoor scenes from GRUTopia (otherwise use `--no_load_indoor_scene` flag), please follow their instructions [here](https://github.com/OpenRobotLab/GRUtopia?tab=readme-ov-file#%EF%B8%8F-assets) to download the commercial_scenes.zip, and unzip it under `assets/ViCo/scene/`.
+If you want to use indoor scenes from GRUTopia (otherwise use `--no_load_indoor_scene` flag), please follow their instructions [here](https://github.com/OpenRobotLab/GRUtopia?tab=readme-ov-file#%EF%B8%8F-assets) to download the commercial_scenes.zip, and unzip it under `vico/assets/ViCo/scene/`.
 
 After this step, the directory structure should be:
 
 ```
-assets/ViCo/
+vico/assets/ViCo/
 ├── scene/
 ├──── v1/
 ├──── commercial_scenes/ (optional)

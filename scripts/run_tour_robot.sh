@@ -1,5 +1,5 @@
-python env.py --head_less \
---backend gpu \
+python scripts/run_env.py --head_less \
+--backend cpu \
 --skip_avatar_animation \
 --scene NY \
 --no_load_indoor_scene \

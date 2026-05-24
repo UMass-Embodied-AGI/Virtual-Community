@@ -1,0 +1,442 @@
+{
+    "Kate Novak": {
+        "age": 23,
+        "living_place": "Kate Novak's room at Hyatt Herald Square New York",
+        "appearance": "assets/imgs/avatars/Kate Novak.png",
+        "groups": [
+            "Art and Culture Enthusiasts"
+        ]
+    },
+    "Louise Roberts": {
+        "age": 29,
+        "living_place": "Louise Roberts's room at Furnished Quarters",
+        "appearance": "assets/imgs/avatars/Louise Roberts.png",
+        "groups": [
+            "Art and Culture Enthusiasts"
+        ]
+    },
+    "Steve Johnson": {
+        "age": 30,
+        "living_place": "Hadson Realty",
+        "appearance": "assets/imgs/avatars/Steve Johnson.png",
+        "groups": [
+            "Art and Culture Enthusiasts"
+        ]
+    },
+    "Art and Culture Enthusiasts": {
+        "description": "A group of individuals passionate about art, culture, and history, who explore museums and galleries together.",
+        "place": "Creative Art Works",
+        "members": [
+            "Kate Novak",
+            "Steve Johnson",
+            "Louise Roberts",
+            "Naomi Zhang"
+        ],
+        "daily_activity": "visiting art galleries from 16:00 to 18:00"
+    },
+    "Naomi Zhang's room at The Hotel at Fifth Avenue": {
+        "building": "The Hotel @ 5th Avenue",
+        "coarse_type": "accommodation",
+        "fine_types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1136.844165802002,
+            852.2810897827148,
+            -8
+        ],
+        "scene": "indoor_scenes/accomodation-3.json",
+        "name": "Naomi Zhang's room at The Hotel at Fifth Avenue",
+        "bounding_box": [
+            138.13950004457917,
+            -147.66154704938174,
+            139.31176376342773,
+            22.60433200200703,
+            28.77761214427944,
+            39.95581817626953,
+            -0.5047484241222926
+        ]
+    },
+    "The Hotel at Fifth Avenue": {
+        "building": "The Hotel @ 5th Avenue",
+        "coarse_type": "accommodation",
+        "fine_types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1136.844165802002,
+            852.2810897827148,
+            -4
+        ],
+        "scene": "indoor_scenes/accomodation-3.json",
+        "bounding_box": [
+            138.13950004457917,
+            -147.66154704938174,
+            139.31176376342773,
+            22.60433200200703,
+            28.77761214427944,
+            39.95581817626953,
+            -0.5047484241222926
+        ]
+    },
+    "Creative Art Works": {
+        "building": "Manhattan Mall",
+        "coarse_type": "entertainment",
+        "fine_types": [
+            "art_gallery",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            912.0142936706543,
+            986.3369770050049,
+            -8
+        ],
+        "scene": "indoor_scenes/MV4AFHQKTKJZ2AABAAAAAEA8.json",
+        "bounding_box": [
+            -87.99254708130022,
+            -3.0164706221076525,
+            146.6420669555664,
+            104.82575874028153,
+            60.9554637105247,
+            57.36222839355469,
+            -0.5049870570731838
+        ]
+    },
+    "My Cooking Party": {
+        "building": "130 West 29th Street 6th Floor",
+        "coarse_type": "food",
+        "fine_types": [
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "location": [
+            712.7225799560547,
+            767.3263397216797,
+            -8
+        ],
+        "scene": "indoor_scenes/MWHLEPQKTIFZIAABAAAAAAA8.json",
+        "bounding_box": [
+            -287.273216746148,
+            -232.6736473645091,
+            141.23655700683597,
+            11.968931024730045,
+            26.58043054724567,
+            47.82476806640625,
+            -0.5045187456682845
+        ]
+    },
+    "Idea Nuova Inc": {
+        "building": "302 5th Avenue",
+        "coarse_type": "office",
+        "fine_types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1162.615135192871,
+            745.3537521362305,
+            -8
+        ],
+        "scene": "indoor_scenes/MV7J6NIKTKJZ2AABAAAAAAA8.json",
+        "bounding_box": [
+            166.78116607666013,
+            -254.64624786376953,
+            141.81495285034183,
+            39.04346833617033,
+            26.57725526046413,
+            47.151588439941406,
+            -0.5137604612671748
+        ]
+    },
+    "Maru Karaoke Lounge": {
+        "building": "11 West 32nd Street",
+        "coarse_type": "food",
+        "fine_types": [
+            "bar",
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1161.2002716064453,
+            839.4018936157227,
+            -4
+        ],
+        "scene": "indoor_scenes/MV5M25QKTKJZ2AABAAAAAAI8.json",
+        "bounding_box": [
+            161.20028394285737,
+            -160.59810476944108,
+            141.64703750610352,
+            15.017496366422412,
+            26.931707245485633,
+            45.090263366699205,
+            -0.5048190204161771
+        ]
+    },
+    "Ikbal's Halal Food": {
+        "building": "Manhattan Mall",
+        "coarse_type": "food",
+        "fine_types": [
+            "restaurant",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "location": [
+            912.0142936706543,
+            986.3369770050049,
+            -28
+        ],
+        "scene": "indoor_scenes/MWHLEPQKTIFZIAABAAAAAAA8.json",
+        "bounding_box": [
+            -87.99254708130022,
+            -3.0164706221076525,
+            146.6420669555664,
+            104.82575874028153,
+            60.9554637105247,
+            57.36222839355469,
+            -0.5049870570731838
+        ]
+    },
+    "Chorus Karaoke": {
+        "building": "25 West 32nd Street",
+        "coarse_type": "food",
+        "fine_types": [
+            "bar",
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1116.3717498779297,
+            866.1845169067383,
+            -8
+        ],
+        "scene": "indoor_scenes/MWHLEPQKTIFZIAABAAAAAAA8.json",
+        "bounding_box": [
+            116.37175898459454,
+            -133.8154796930211,
+            134.18000411987305,
+            14.181450311888335,
+            30.242883875759496,
+            29.161231994628906,
+            -0.5049089994935151
+        ]
+    },
+    "Broadway Bites": {
+        "building": "Greeley Square Building",
+        "coarse_type": "food",
+        "fine_types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            899.0340919494629,
+            895.734016418457,
+            -4
+        ],
+        "scene": "indoor_scenes/MWHLEPQKTIFZIAABAAAAAAA8.json",
+        "bounding_box": [
+            -100.95115106399811,
+            -103.09984511953616,
+            165.5618019104004,
+            30.543137717582347,
+            30.24054606799013,
+            94.87682342529297,
+            -0.5064983153094723
+        ]
+    },
+    "Fresh and Snacks Store": {
+        "building": "330 5th Avenue",
+        "coarse_type": "stores",
+        "fine_types": [
+            "home_goods_store",
+            "store",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1221.8242492675781,
+            838.8580017089844,
+            -4
+        ],
+        "scene": "indoor_scenes/store-Fresh-Snacks.json",
+        "bounding_box": [
+            221.82428741455078,
+            -161.1419982910156,
+            143.86532592773438,
+            30.610427245328438,
+            35.2564172870728,
+            48.96551513671875,
+            -0.5047838105291294
+        ]
+    },
+    "Fresh and DM Store": {
+        "building": "31 West 32nd Street",
+        "coarse_type": "stores",
+        "fine_types": [
+            "book_store",
+            "store",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1100.145420074463,
+            888.8156204223633,
+            -8
+        ],
+        "scene": "indoor_scenes/store-Fresh-DM.json",
+        "bounding_box": [
+            104.22343444824219,
+            -109.94708251953125,
+            142.21531677246094,
+            30.175371170043945,
+            60.1749153137207,
+            44.88990020751953,
+            -0.5049095153808594
+        ]
+    },
+    "West 33rd Street Bus Stop": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bus stop",
+        "location": [
+            -21.863142239604706,
+            3.1658655452613136
+        ],
+        "rotation": 1.0600621214984063,
+        "bounding_box": null
+    },
+    "West 30th Street Bus Stop": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bus stop",
+        "location": [
+            -164.61506034391584,
+            -177.51857904087157
+        ],
+        "rotation": -2.0742518450169194,
+        "bounding_box": null
+    },
+    "West 32nd Street Bus Stop": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bus stop",
+        "location": [
+            208.81712440140075,
+            -209.97002528743698
+        ],
+        "rotation": -2.078742912675693,
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 1": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            78.04482205789564,
+            -149.51055936875215
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 2": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            -184.09744629704446,
+            -88.75683696354766
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 3": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            166.06543909251093,
+            -11.633172081622893
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 4": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            -142.17263687851377,
+            180.79953000430368
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 5": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            -64.68121964625644,
+            -129.33286547358568
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 6": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            -210.83448137085242,
+            -237.86099832166857
+        ],
+        "bounding_box": null
+    },
+    "transit_schedule": {
+        "To West 32nd Street": [
+            {
+                "stop_name": "West 33rd Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:00",
+                "last_bus": "22:00"
+            },
+            {
+                "stop_name": "West 30th Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:01",
+                "last_bus": "22:01"
+            },
+            {
+                "stop_name": "West 32nd Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:03",
+                "last_bus": "22:03"
+            }
+        ],
+        "To West 33rd Street": [
+            {
+                "stop_name": "West 32nd Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:03",
+                "last_bus": "22:03"
+            },
+            {
+                "stop_name": "West 30th Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:04",
+                "last_bus": "22:04"
+            },
+            {
+                "stop_name": "West 33rd Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:06",
+                "last_bus": "22:06"
+            }
+        ]
+    }
+}

@@ -1,0 +1,409 @@
+{
+    "Layla Haddad": {
+        "age": 19,
+        "living_place": "Hotel Stanford",
+        "appearance": "assets/imgs/avatars/Layla Haddad.png",
+        "groups": [
+            "Music and Entertainment Crew"
+        ]
+    },
+    "Tariq Johnson": {
+        "age": 24,
+        "living_place": "Courtyard New York Manhattan/Chelsea",
+        "appearance": "assets/imgs/avatars/Tariq Johnson.png",
+        "groups": [
+            "Music and Entertainment Crew"
+        ]
+    },
+    "Music and Entertainment Crew": {
+        "description": "A group of music lovers and entertainers who enjoy creating and performing music together.",
+        "place": "Maru Karaoke Lounge",
+        "members": [
+            "Tariq Johnson",
+            "Layla Haddad",
+            "James Thompson"
+        ],
+        "daily_activity": "jamming and performing music from 18:00 to 20:00"
+    },
+    "James Thompson's room at The Magellan": {
+        "building": "The Magellan",
+        "coarse_type": "accommodation",
+        "fine_types": [
+            "real_estate_agency",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1111.491611480713,
+            958.9692373275757,
+            -8
+        ],
+        "scene": "indoor_scenes/accomodation-0.json",
+        "name": "James Thompson's room at The Magellan",
+        "bounding_box": [
+            111.49943564050403,
+            -41.023408308307694,
+            166.6583023071289,
+            20.593033776248504,
+            30.503396031090094,
+            97.70414733886719,
+            -0.5056685463407206
+        ]
+    },
+    "Saint Francis Breadline/st. Francis Friends Of The Poor, Inc. - Food Distribution Center": {
+        "building": "Saint Francis of Assisi School",
+        "coarse_type": "food",
+        "fine_types": [
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "location": [
+            773.9012680053711,
+            961.4153165817261,
+            -4
+        ],
+        "scene": "indoor_scenes/MV5M25QKTKJZ2AABAAAAAAI8.json",
+        "bounding_box": [
+            -225.53198188896442,
+            -38.939596226366234,
+            123.60586166381836,
+            9.567604911485988,
+            21.278347057578287,
+            13.336006164550781,
+            -0.5045819235510547
+        ]
+    },
+    "Maru Karaoke Lounge": {
+        "building": "11 West 32nd Street",
+        "coarse_type": "food",
+        "fine_types": [
+            "bar",
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1161.2002716064453,
+            839.4018936157227,
+            -4
+        ],
+        "scene": "indoor_scenes/MV5M25QKTKJZ2AABAAAAAAI8.json",
+        "bounding_box": [
+            161.20028394285737,
+            -160.59810476944108,
+            141.64703750610352,
+            15.017496366422412,
+            26.931707245485633,
+            45.090263366699205,
+            -0.5048190204161771
+        ]
+    },
+    "My Cooking Party": {
+        "building": "130 West 29th Street 6th Floor",
+        "coarse_type": "food",
+        "fine_types": [
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "location": [
+            712.7225799560547,
+            767.3263397216797,
+            -8
+        ],
+        "scene": "indoor_scenes/MWHLEPQKTIFZIAABAAAAAAA8.json",
+        "bounding_box": [
+            -287.273216746148,
+            -232.6736473645091,
+            141.23655700683597,
+            11.968931024730045,
+            26.58043054724567,
+            47.82476806640625,
+            -0.5045187456682845
+        ]
+    },
+    "Idea Nuova Inc": {
+        "building": "302 5th Avenue",
+        "coarse_type": "office",
+        "fine_types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1162.615135192871,
+            745.3537521362305,
+            -8
+        ],
+        "scene": "indoor_scenes/MV7J6NIKTKJZ2AABAAAAAAA8.json",
+        "bounding_box": [
+            166.78116607666013,
+            -254.64624786376953,
+            141.81495285034183,
+            39.04346833617033,
+            26.57725526046413,
+            47.151588439941406,
+            -0.5137604612671748
+        ]
+    },
+    "Creative Art Works": {
+        "building": "Manhattan Mall",
+        "coarse_type": "entertainment",
+        "fine_types": [
+            "art_gallery",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            912.0142936706543,
+            986.3369770050049,
+            -8
+        ],
+        "scene": "indoor_scenes/MV4AFHQKTKJZ2AABAAAAAEA8.json",
+        "bounding_box": [
+            -87.99254708130022,
+            -3.0164706221076525,
+            146.6420669555664,
+            104.82575874028153,
+            60.9554637105247,
+            57.36222839355469,
+            -0.5049870570731838
+        ]
+    },
+    "Osamil": {
+        "building": "5 West 31st Street",
+        "coarse_type": "food",
+        "fine_types": [
+            "bar",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1147.021011352539,
+            757.8211059570312,
+            -4
+        ],
+        "scene": "indoor_scenes/MV5M25QKTKJZ2AABAAAAAAI8.json",
+        "bounding_box": [
+            147.0463166282184,
+            -242.17888894798878,
+            139.32381439208987,
+            7.719387487556864,
+            28.90506625939441,
+            41.47477722167969,
+            -0.5125011388280382
+        ]
+    },
+    "Fresh and Snacks Store": {
+        "building": "330 5th Avenue",
+        "coarse_type": "stores",
+        "fine_types": [
+            "home_goods_store",
+            "store",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1221.8242492675781,
+            838.8580017089844,
+            -4
+        ],
+        "scene": "indoor_scenes/store-Fresh-Snacks.json",
+        "bounding_box": [
+            221.82428741455078,
+            -161.1419982910156,
+            143.86532592773438,
+            30.610427245328438,
+            35.2564172870728,
+            48.96551513671875,
+            -0.5047838105291294
+        ]
+    },
+    "Fresh and Beverages Store": {
+        "building": "1235 Broadway",
+        "coarse_type": "stores",
+        "fine_types": [
+            "store",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            943.8778076171875,
+            769.8535232543945,
+            -8
+        ],
+        "scene": "indoor_scenes/store-Fresh-Beverages.json",
+        "bounding_box": [
+            -52.94042068798431,
+            -226.06583904509267,
+            126.48215484619142,
+            18.778852966593117,
+            51.27035995071426,
+            16.201675415039062,
+            1.0633228611263694
+        ]
+    },
+    "Arrive": {
+        "building": "129 West 29th Street Second Floor",
+        "coarse_type": "entertainment",
+        "fine_types": [
+            "physiotherapist",
+            "gym",
+            "health",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            739.9726715087891,
+            803.6043243408203,
+            -4
+        ],
+        "scene": "indoor_scenes/MV4AFHQKTKJZ2AABAAAAAEA8.json",
+        "bounding_box": [
+            -259.029740431504,
+            -196.3960782716385,
+            139.8987274169922,
+            22.542420945905377,
+            27.270730346659494,
+            45.107177734375,
+            -0.5061188108067041
+        ]
+    },
+    "West 33rd Street Bus Stop": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bus stop",
+        "location": [
+            -21.863142239604706,
+            3.1658655452613136
+        ],
+        "rotation": 1.0600621214984063,
+        "bounding_box": null
+    },
+    "West 30th Street Bus Stop": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bus stop",
+        "location": [
+            -164.61506034391584,
+            -177.51857904087157
+        ],
+        "rotation": -2.0742518450169194,
+        "bounding_box": null
+    },
+    "West 32nd Street Bus Stop": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bus stop",
+        "location": [
+            208.81712440140075,
+            -209.97002528743698
+        ],
+        "rotation": -2.078742912675693,
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 1": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            78.04482205789564,
+            -149.51055936875215
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 2": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            -184.09744629704446,
+            -88.75683696354766
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 3": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            166.06543909251093,
+            -11.633172081622893
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 4": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            -142.17263687851377,
+            180.79953000430368
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 5": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            -64.68121964625644,
+            -129.33286547358568
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 6": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            -210.83448137085242,
+            -237.86099832166857
+        ],
+        "bounding_box": null
+    },
+    "transit_schedule": {
+        "To West 32nd Street": [
+            {
+                "stop_name": "West 33rd Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:00",
+                "last_bus": "22:00"
+            },
+            {
+                "stop_name": "West 30th Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:01",
+                "last_bus": "22:01"
+            },
+            {
+                "stop_name": "West 32nd Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:03",
+                "last_bus": "22:03"
+            }
+        ],
+        "To West 33rd Street": [
+            {
+                "stop_name": "West 32nd Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:03",
+                "last_bus": "22:03"
+            },
+            {
+                "stop_name": "West 30th Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:04",
+                "last_bus": "22:04"
+            },
+            {
+                "stop_name": "West 33rd Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:06",
+                "last_bus": "22:06"
+            }
+        ]
+    }
+}

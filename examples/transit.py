@@ -4,20 +4,16 @@ import os
 import random
 import numpy as np
 import shutil, errno
-import sys
 from datetime import datetime
 
 import genesis as gs
 
-# Set up the current directory
-current_directory = os.getcwd()
-sys.path.insert(0, current_directory)
-
-from agents import Agent
-from agents.scene_graph import SceneGraph
-from tools.utils import *
-from env import VicoEnv, AgentProcess
-from modules import *
+from vico.agents.agent import Agent
+from vico.agents.scene_graph import SceneGraph
+from vico.tools.utils import *
+from vico.env import VicoEnv
+from vico.agents import AgentProcess
+from vico.modules import *
 
 class TransitAgent(Agent):
 	def __init__(self, name, pose, info, sim_path, spatial_memory, transit_info, no_react=False, debug=False, logger=None):

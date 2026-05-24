@@ -1,0 +1,417 @@
+{
+    "Brian Carter": {
+        "age": 35,
+        "living_place": "Brian Carter's room at E\u014cS NoMad Apartments",
+        "appearance": "assets/imgs/avatars/Brian Carter.png",
+        "groups": [
+            "Culinary Creators"
+        ]
+    },
+    "Eve By J Gonzales": {
+        "age": 21,
+        "living_place": "Eve By J Gonzales's room at Living Quest Real Estate",
+        "appearance": "assets/imgs/avatars/Eve By J Gonzales.png",
+        "groups": [
+            "Culinary Creators"
+        ]
+    },
+    "Freya Novak": {
+        "age": 22,
+        "living_place": "Freya Novak's room at Kimpton Hotel Eventi",
+        "appearance": "assets/imgs/avatars/Freya Novak.png",
+        "groups": [
+            "Culinary Creators"
+        ]
+    },
+    "Culinary Creators": {
+        "description": "A group of food enthusiasts and culinary experts who gather to share recipes and cooking techniques.",
+        "place": "My Cooking Party",
+        "members": [
+            "Morten Lindqvist",
+            "Eve By J Gonzales",
+            "Freya Novak",
+            "Brian Carter"
+        ],
+        "daily_activity": "experimenting with new recipes from 17:00 to 19:00"
+    },
+    "Morten Lindqvist's room at Life Hotel New York": {
+        "building": "Life Hotel",
+        "coarse_type": "accommodation",
+        "fine_types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1097.0518035888672,
+            786.0063781738281,
+            -12
+        ],
+        "scene": "indoor_scenes/accomodation-2.json",
+        "name": "Morten Lindqvist's room at Life Hotel New York",
+        "bounding_box": [
+            97.03073501586915,
+            -213.9936218261719,
+            137.22705078125,
+            15.513825683526871,
+            28.351103055590027,
+            36.8472900390625,
+            -0.5121630368055443
+        ]
+    },
+    "Life Hotel New York": {
+        "building": "Life Hotel",
+        "coarse_type": "accommodation",
+        "fine_types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1097.0518035888672,
+            786.0063781738281,
+            -4
+        ],
+        "scene": "indoor_scenes/accomodation-2.json",
+        "bounding_box": [
+            97.03073501586915,
+            -213.9936218261719,
+            137.22705078125,
+            15.513825683526871,
+            28.351103055590027,
+            36.8472900390625,
+            -0.5121630368055443
+        ]
+    },
+    "My Cooking Party": {
+        "building": "130 West 29th Street 6th Floor",
+        "coarse_type": "food",
+        "fine_types": [
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "location": [
+            712.7225799560547,
+            767.3263397216797,
+            -8
+        ],
+        "scene": "indoor_scenes/MWHLEPQKTIFZIAABAAAAAAA8.json",
+        "bounding_box": [
+            -287.273216746148,
+            -232.6736473645091,
+            141.23655700683597,
+            11.968931024730045,
+            26.58043054724567,
+            47.82476806640625,
+            -0.5045187456682845
+        ]
+    },
+    "Idea Nuova Inc": {
+        "building": "302 5th Avenue",
+        "coarse_type": "office",
+        "fine_types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1162.615135192871,
+            745.3537521362305,
+            -8
+        ],
+        "scene": "indoor_scenes/MV7J6NIKTKJZ2AABAAAAAAA8.json",
+        "bounding_box": [
+            166.78116607666013,
+            -254.64624786376953,
+            141.81495285034183,
+            39.04346833617033,
+            26.57725526046413,
+            47.151588439941406,
+            -0.5137604612671748
+        ]
+    },
+    "Creative Art Works": {
+        "building": "Manhattan Mall",
+        "coarse_type": "entertainment",
+        "fine_types": [
+            "art_gallery",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            912.0142936706543,
+            986.3369770050049,
+            -8
+        ],
+        "scene": "indoor_scenes/MV4AFHQKTKJZ2AABAAAAAEA8.json",
+        "bounding_box": [
+            -87.99254708130022,
+            -3.0164706221076525,
+            146.6420669555664,
+            104.82575874028153,
+            60.9554637105247,
+            57.36222839355469,
+            -0.5049870570731838
+        ]
+    },
+    "Maru Karaoke Lounge": {
+        "building": "11 West 32nd Street",
+        "coarse_type": "food",
+        "fine_types": [
+            "bar",
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1161.2002716064453,
+            839.4018936157227,
+            -4
+        ],
+        "scene": "indoor_scenes/MV5M25QKTKJZ2AABAAAAAAI8.json",
+        "bounding_box": [
+            161.20028394285737,
+            -160.59810476944108,
+            141.64703750610352,
+            15.017496366422412,
+            26.931707245485633,
+            45.090263366699205,
+            -0.5048190204161771
+        ]
+    },
+    "Ayza Wine & Chocolate Bar": {
+        "building": "Life Hotel",
+        "coarse_type": "food",
+        "fine_types": [
+            "bar",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "location": [
+            1097.0518035888672,
+            786.0063781738281,
+            -8
+        ],
+        "scene": "indoor_scenes/MV5M25QKTKJZ2AABAAAAAAI8.json",
+        "bounding_box": [
+            97.03073501586915,
+            -213.9936218261719,
+            137.22705078125,
+            15.513825683526871,
+            28.351103055590027,
+            36.8472900390625,
+            -0.5121630368055443
+        ]
+    },
+    "Beverages and Snacks Store": {
+        "building": "Cambria Hotel & Suites",
+        "coarse_type": "stores",
+        "fine_types": [
+            "clothing_store",
+            "store",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            712.4935150146484,
+            732.4054336547852,
+            -8
+        ],
+        "scene": "indoor_scenes/store-Beverages-Snacks.json",
+        "bounding_box": [
+            -287.5071770169319,
+            -267.59578067723425,
+            142.71878051757815,
+            15.742136436926929,
+            21.572867305410863,
+            50.13873291015625,
+            -0.5057876595085739
+        ]
+    },
+    "Fresh and DM Store": {
+        "building": "31 West 32nd Street",
+        "coarse_type": "stores",
+        "fine_types": [
+            "book_store",
+            "store",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1100.145420074463,
+            888.8156204223633,
+            -8
+        ],
+        "scene": "indoor_scenes/store-Fresh-DM.json",
+        "bounding_box": [
+            104.22343444824219,
+            -109.94708251953125,
+            142.21531677246094,
+            30.175371170043945,
+            60.1749153137207,
+            44.88990020751953,
+            -0.5049095153808594
+        ]
+    },
+    "Empire State Building": {
+        "building": "Empire State Building",
+        "coarse_type": "entertainment",
+        "fine_types": [
+            "tourist_attraction",
+            "museum",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1209.8928298950195,
+            922.1136102676392,
+            -12
+        ],
+        "scene": "indoor_scenes/MVJWVGYKTLDAYAABAAAAAAQ8.json",
+        "bounding_box": [
+            209.90191650390625,
+            -77.88565826416016,
+            332.58038330078125,
+            59.62389373779297,
+            129.4319305419922,
+            425.0972595214844,
+            1.06252121925354
+        ]
+    },
+    "West 33rd Street Bus Stop": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bus stop",
+        "location": [
+            -21.863142239604706,
+            3.1658655452613136
+        ],
+        "rotation": 1.0600621214984063,
+        "bounding_box": null
+    },
+    "West 30th Street Bus Stop": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bus stop",
+        "location": [
+            -164.61506034391584,
+            -177.51857904087157
+        ],
+        "rotation": -2.0742518450169194,
+        "bounding_box": null
+    },
+    "West 32nd Street Bus Stop": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bus stop",
+        "location": [
+            208.81712440140075,
+            -209.97002528743698
+        ],
+        "rotation": -2.078742912675693,
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 1": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            78.04482205789564,
+            -149.51055936875215
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 2": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            -184.09744629704446,
+            -88.75683696354766
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 3": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            166.06543909251093,
+            -11.633172081622893
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 4": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            -142.17263687851377,
+            180.79953000430368
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 5": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            -64.68121964625644,
+            -129.33286547358568
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 6": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            -210.83448137085242,
+            -237.86099832166857
+        ],
+        "bounding_box": null
+    },
+    "transit_schedule": {
+        "To West 32nd Street": [
+            {
+                "stop_name": "West 33rd Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:00",
+                "last_bus": "22:00"
+            },
+            {
+                "stop_name": "West 30th Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:01",
+                "last_bus": "22:01"
+            },
+            {
+                "stop_name": "West 32nd Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:03",
+                "last_bus": "22:03"
+            }
+        ],
+        "To West 33rd Street": [
+            {
+                "stop_name": "West 32nd Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:03",
+                "last_bus": "22:03"
+            },
+            {
+                "stop_name": "West 30th Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:04",
+                "last_bus": "22:04"
+            },
+            {
+                "stop_name": "West 33rd Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:06",
+                "last_bus": "22:06"
+            }
+        ]
+    }
+}

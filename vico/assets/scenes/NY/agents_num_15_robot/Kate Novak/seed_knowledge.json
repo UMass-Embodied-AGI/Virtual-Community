@@ -1,0 +1,443 @@
+{
+    "Louise Roberts": {
+        "age": 29,
+        "living_place": "Furnished Quarters",
+        "appearance": "assets/imgs/avatars/Louise Roberts.png",
+        "groups": [
+            "Art and Culture Enthusiasts"
+        ]
+    },
+    "Naomi Zhang": {
+        "age": 28,
+        "living_place": "The Hotel at Fifth Avenue",
+        "appearance": "assets/imgs/avatars/Naomi Zhang.png",
+        "groups": [
+            "Art and Culture Enthusiasts"
+        ]
+    },
+    "Steve Johnson": {
+        "age": 30,
+        "living_place": "Hadson Realty",
+        "appearance": "assets/imgs/avatars/Steve Johnson.png",
+        "groups": [
+            "Art and Culture Enthusiasts"
+        ]
+    },
+    "Art and Culture Enthusiasts": {
+        "description": "A group of individuals passionate about art, culture, and history, who explore museums and galleries together.",
+        "place": "Creative Art Works",
+        "members": [
+            "Kate Novak",
+            "Steve Johnson",
+            "Louise Roberts",
+            "Naomi Zhang"
+        ],
+        "daily_activity": "visiting art galleries from 16:00 to 18:00"
+    },
+    "Kate Novak's room at Hyatt Herald Square New York": {
+        "building": "Hyatt Herald Square New York",
+        "coarse_type": "accommodation",
+        "fine_types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1039.6702241897583,
+            760.3578414916992,
+            -12
+        ],
+        "scene": "indoor_scenes/accomodation-6.json",
+        "name": "Kate Novak's room at Hyatt Herald Square New York",
+        "bounding_box": [
+            39.670225788872,
+            -239.64214411723827,
+            137.57874298095706,
+            15.626976877002507,
+            23.842745598430376,
+            37.33033752441406,
+            -0.4971669913152936
+        ]
+    },
+    "Hyatt Herald Square New York": {
+        "building": "Hyatt Herald Square New York",
+        "coarse_type": "accommodation",
+        "fine_types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1039.6702241897583,
+            760.3578414916992,
+            -4
+        ],
+        "scene": "indoor_scenes/accomodation-6.json",
+        "bounding_box": [
+            39.670225788872,
+            -239.64214411723827,
+            137.57874298095706,
+            15.626976877002507,
+            23.842745598430376,
+            37.33033752441406,
+            -0.4971669913152936
+        ]
+    },
+    "Creative Art Works": {
+        "building": "Manhattan Mall",
+        "coarse_type": "entertainment",
+        "fine_types": [
+            "art_gallery",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            912.0142936706543,
+            986.3369770050049,
+            -8
+        ],
+        "scene": "indoor_scenes/MV4AFHQKTKJZ2AABAAAAAEA8.json",
+        "bounding_box": [
+            -87.99254708130022,
+            -3.0164706221076525,
+            146.6420669555664,
+            104.82575874028153,
+            60.9554637105247,
+            57.36222839355469,
+            -0.5049870570731838
+        ]
+    },
+    "My Cooking Party": {
+        "building": "130 West 29th Street 6th Floor",
+        "coarse_type": "food",
+        "fine_types": [
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "location": [
+            712.7225799560547,
+            767.3263397216797,
+            -8
+        ],
+        "scene": "indoor_scenes/MWHLEPQKTIFZIAABAAAAAAA8.json",
+        "bounding_box": [
+            -287.273216746148,
+            -232.6736473645091,
+            141.23655700683597,
+            11.968931024730045,
+            26.58043054724567,
+            47.82476806640625,
+            -0.5045187456682845
+        ]
+    },
+    "Idea Nuova Inc": {
+        "building": "302 5th Avenue",
+        "coarse_type": "office",
+        "fine_types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1162.615135192871,
+            745.3537521362305,
+            -8
+        ],
+        "scene": "indoor_scenes/MV7J6NIKTKJZ2AABAAAAAAA8.json",
+        "bounding_box": [
+            166.78116607666013,
+            -254.64624786376953,
+            141.81495285034183,
+            39.04346833617033,
+            26.57725526046413,
+            47.151588439941406,
+            -0.5137604612671748
+        ]
+    },
+    "Maru Karaoke Lounge": {
+        "building": "11 West 32nd Street",
+        "coarse_type": "food",
+        "fine_types": [
+            "bar",
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1161.2002716064453,
+            839.4018936157227,
+            -4
+        ],
+        "scene": "indoor_scenes/MV5M25QKTKJZ2AABAAAAAAI8.json",
+        "bounding_box": [
+            161.20028394285737,
+            -160.59810476944108,
+            141.64703750610352,
+            15.017496366422412,
+            26.931707245485633,
+            45.090263366699205,
+            -0.5048190204161771
+        ]
+    },
+    "Ikbal's Halal Food": {
+        "building": "Manhattan Mall",
+        "coarse_type": "food",
+        "fine_types": [
+            "restaurant",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "location": [
+            912.0142936706543,
+            986.3369770050049,
+            -28
+        ],
+        "scene": "indoor_scenes/MWHLEPQKTIFZIAABAAAAAAA8.json",
+        "bounding_box": [
+            -87.99254708130022,
+            -3.0164706221076525,
+            146.6420669555664,
+            104.82575874028153,
+            60.9554637105247,
+            57.36222839355469,
+            -0.5049870570731838
+        ]
+    },
+    "Up on 20 Rooftop Lounge": {
+        "building": "Hyatt Herald Square New York",
+        "coarse_type": "food",
+        "fine_types": [
+            "night_club",
+            "bar",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            1039.6702241897583,
+            760.3578414916992,
+            -8
+        ],
+        "scene": "indoor_scenes/MWHLEPQKTIFZIAABAAAAAAA8.json",
+        "bounding_box": [
+            39.670225788872,
+            -239.64214411723827,
+            137.57874298095706,
+            15.626976877002507,
+            23.842745598430376,
+            37.33033752441406,
+            -0.4971669913152936
+        ]
+    },
+    "Friedman's Herald Square": {
+        "building": "132 West 31st Street",
+        "coarse_type": "food",
+        "fine_types": [
+            "meal_takeaway",
+            "bar",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            778.9717559814453,
+            893.3489532470703,
+            -4
+        ],
+        "scene": "indoor_scenes/MWHLEPQKTIFZIAABAAAAAAA8.json",
+        "bounding_box": [
+            -221.02334594726562,
+            -108.4853515625,
+            147.06138610839844,
+            37.39495086669922,
+            59.916748046875,
+            59.93046569824219,
+            -0.5043364763259888
+        ]
+    },
+    "Beverages and DM Store": {
+        "building": "Macy's",
+        "coarse_type": "stores",
+        "fine_types": [
+            "store",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            913.9607601165771,
+            1186.2614402770996,
+            -8
+        ],
+        "scene": "indoor_scenes/store-Beverages-DM.json",
+        "bounding_box": [
+            -78.07142163349155,
+            186.41713195475742,
+            137.64349746704102,
+            62.00910475735177,
+            220.29955843176916,
+            40.736106872558594,
+            1.0600280517096008
+        ]
+    },
+    "Beverages and Snacks Store": {
+        "building": "Cambria Hotel & Suites",
+        "coarse_type": "stores",
+        "fine_types": [
+            "clothing_store",
+            "store",
+            "point_of_interest",
+            "establishment"
+        ],
+        "location": [
+            712.4935150146484,
+            732.4054336547852,
+            -8
+        ],
+        "scene": "indoor_scenes/store-Beverages-Snacks.json",
+        "bounding_box": [
+            -287.5071770169319,
+            -267.59578067723425,
+            142.71878051757815,
+            15.742136436926929,
+            21.572867305410863,
+            50.13873291015625,
+            -0.5057876595085739
+        ]
+    },
+    "West 33rd Street Bus Stop": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bus stop",
+        "location": [
+            -21.863142239604706,
+            3.1658655452613136
+        ],
+        "rotation": 1.0600621214984063,
+        "bounding_box": null
+    },
+    "West 30th Street Bus Stop": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bus stop",
+        "location": [
+            -164.61506034391584,
+            -177.51857904087157
+        ],
+        "rotation": -2.0742518450169194,
+        "bounding_box": null
+    },
+    "West 32nd Street Bus Stop": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bus stop",
+        "location": [
+            208.81712440140075,
+            -209.97002528743698
+        ],
+        "rotation": -2.078742912675693,
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 1": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            78.04482205789564,
+            -149.51055936875215
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 2": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            -184.09744629704446,
+            -88.75683696354766
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 3": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            166.06543909251093,
+            -11.633172081622893
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 4": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            -142.17263687851377,
+            180.79953000430368
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 5": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            -64.68121964625644,
+            -129.33286547358568
+        ],
+        "bounding_box": null
+    },
+    "Bicycle Sharing Station 6": {
+        "building": "open space",
+        "coarse_type": "transit",
+        "fine_type": "bike station",
+        "location": [
+            -210.83448137085242,
+            -237.86099832166857
+        ],
+        "bounding_box": null
+    },
+    "transit_schedule": {
+        "To West 32nd Street": [
+            {
+                "stop_name": "West 33rd Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:00",
+                "last_bus": "22:00"
+            },
+            {
+                "stop_name": "West 30th Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:01",
+                "last_bus": "22:01"
+            },
+            {
+                "stop_name": "West 32nd Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:03",
+                "last_bus": "22:03"
+            }
+        ],
+        "To West 33rd Street": [
+            {
+                "stop_name": "West 32nd Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:03",
+                "last_bus": "22:03"
+            },
+            {
+                "stop_name": "West 30th Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:04",
+                "last_bus": "22:04"
+            },
+            {
+                "stop_name": "West 33rd Street Bus Stop",
+                "frequency": 15,
+                "first_bus": "06:06",
+                "last_bus": "22:06"
+            }
+        ]
+    }
+}

@@ -1,4 +1,4 @@
-python env.py \
+python scripts/run_env.py \
 --backend cpu \
 --skip_avatar_animation \
 --no_load_indoor_scene \
