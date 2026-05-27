@@ -67,9 +67,11 @@ class Generator:
 			self.output_token_price = -2 * 10 ** -6
 		if self.lm_source == "openai":
 			from openai import OpenAI
+			_timeout = 60 if "embedding" in self.lm_id else 400
 			self.client = OpenAI(
 				api_key=os.environ['OPENAI_API_KEY'],  # this is also the default, it can be omitted
 				max_retries=self.max_retries,
+				timeout=_timeout,
 			) if 'OPENAI_API_KEY' in os.environ else None
 		elif self.lm_source == "azure":
 			from openai import AzureOpenAI
@@ -81,10 +83,12 @@ class Generator:
 					api_keys = api_keys["all"]
 				api_keys = random.sample(api_keys, 1)[0]
 				self.logger.info(f"Using Azure API key: {api_keys['AZURE_ENDPOINT']}")
+				_timeout = 60 if "embedding" in self.lm_id else 400
 				self.client = AzureOpenAI(
 					azure_endpoint=api_keys['AZURE_ENDPOINT'],
 					api_key=api_keys['OPENAI_API_KEY'],
 					api_version="2024-12-01-preview",
+					timeout=_timeout,
 				)
 			except Exception as e:
 				self.logger.error(f"Error loading .api_keys.json: {e} with traceback: {traceback.format_exc()}")
@@ -142,13 +146,11 @@ class Generator:
 			if self.lm_id[0] == 'o':
 				params = {
 					"reasoning_effort": "high",
-					"timeout": 400,
 				}
 			else:
 				params = {
 					"temperature": temperature,
 					"top_p": top_p,
-					"timeout": 40,
 				}
 			response = self.client.chat.completions.create(
 					model=self.lm_id,
