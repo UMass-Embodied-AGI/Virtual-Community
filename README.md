@@ -87,7 +87,13 @@ cd vico/agents/sg
 
 ### Assets Preparation
 
-Download the assets from the [Google Drive](https://drive.google.com/drive/u/2/folders/15XR80efNfgdpYi-5dXh3lJ35p9WBqFc5) and organize them under `vico/assets/ViCo`.
+Assets are hosted on HuggingFace at [Virtual-Community-AI/assets](https://huggingface.co/datasets/Virtual-Community-AI/assets) and are **downloaded automatically** the first time you run the environment.
+
+To download them manually in advance:
+
+```bash
+python -c "from vico.tools.hf_assets import ensure_vico_assets; ensure_vico_assets()"
+```
 
 Assets include:
 - `scene` folder: contains the generated outdoor 3D scenes.

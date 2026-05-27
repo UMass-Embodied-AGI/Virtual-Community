@@ -128,13 +128,13 @@ def generate_mesh_obj_trimesh_with_uv(x_l, x_r, y_l, y_r, a, b, filename="floor.
 def add_wall(env, x_l, x_r, y_l, y_r, z, cwd, height=3.5, remove_region=None, texture=None, id=0):
     
     if texture is None:
-        texture = os.path.join(cwd, "objects/566fc160-d286-4c4c-96ab-6359881e1a51/1.jpg")
+        texture = os.path.join(cwd, "objects/indoor_objects/566fc160-d286-4c4c-96ab-6359881e1a51/1.jpg")
     elif not texture.startswith('/'):
         texture = os.path.join(cwd, texture)
 
     z_l, z_r = z, z + height
     length, width, height = x_r - x_l, y_r - y_l, z_r - z_l
-    wall_path = os.path.join(cwd, 'objects/wall.obj')
+    wall_path = os.path.join(cwd, 'objects/indoor_objects/wall.obj')
     env.add_entity(
         type="structure",
         name="wall",
@@ -152,12 +152,12 @@ def add_wall(env, x_l, x_r, y_l, y_r, z, cwd, height=3.5, remove_region=None, te
 
 def add_floor(env, x_l, x_r, y_l, y_r, z, cwd, texture=None, id=0):
     if texture is None:
-        texture = os.path.join(cwd, "objects/0da58c97-71df-479b-9f69-f084b76937f8/Black_marble.jpg")
+        texture = os.path.join(cwd, "objects/indoor_objects/0da58c97-71df-479b-9f69-f084b76937f8/Black_marble.jpg")
     elif not texture.startswith('/'):
         texture = os.path.join(cwd, texture)
     z_l, z_r = z - 0.2, z
     length, width, height = x_r - x_l, y_r - y_l, z_r - z_l
-    wall_path = os.path.join(cwd, 'objects/wall.obj')
+    wall_path = os.path.join(cwd, 'objects/indoor_objects/wall.obj')
     env.add_entity(
         type="structure",
         name="floor",
@@ -176,12 +176,12 @@ def add_floor(env, x_l, x_r, y_l, y_r, z, cwd, texture=None, id=0):
 
 def add_ceiling(env, x_l, x_r, y_l, y_r, z, cwd, texture=None, id=0):
     if texture is None:
-        texture = os.path.join(cwd, "objects/28a9d2d5-2fa6-4c70-a46f-f6974547832e/1.jpg")
+        texture = os.path.join(cwd, "objects/indoor_objects/28a9d2d5-2fa6-4c70-a46f-f6974547832e/1.jpg")
     elif not texture.startswith('/'):
         texture = os.path.join(cwd, texture)
     z_l, z_r = z + 3.5, z + 3.7
     length, width, height = x_r - x_l, y_r - y_l, z_r - z_l
-    wall_path = os.path.join(cwd, 'objects/wall.obj')
+    wall_path = os.path.join(cwd, 'objects/indoor_objects/wall.obj')
     env.add_entity(
         type="structure",
         name="ceiling",
@@ -220,7 +220,7 @@ def load_indoor_scene(env, place, offset_x=0, offset_y=0, offset_z=0, size_x=30,
         size = [room['width'], room['height']]
         center = [offset[0]+size[0]/2, offset[1]+size[1]/2]
         floor_texture = None
-        wall_texture = 'objects/Porcelain_White_Mat.png'
+        wall_texture = 'objects/indoor_objects/Porcelain_White_Mat.png'
         add_wall(env, offset[0] - 0.2, offset[0], offset[1], offset[1]+size[1], offset[2], cwd=cwd, texture=wall_texture)
         add_wall(env, offset[0]+size[0], offset[0]+size[0]+0.2, offset[1], offset[1]+size[1], offset[2], cwd=cwd, texture=wall_texture)
         add_wall(env, offset[0], offset[0]+size[0], offset[1]-0.2, offset[1], offset[2], cwd=cwd, texture=wall_texture)
@@ -234,11 +234,9 @@ def load_indoor_scene(env, place, offset_x=0, offset_y=0, offset_z=0, size_x=30,
             for obj in room['objects']:
                 path = obj['filename']
                 if not path.startswith('/'):
-                    if "grocery_assets" in path: # grocery_assets
-                        path = os.path.join(cwd, 'objects', path)
-                    else:    
-                        path = os.path.join(cwd, 'objects/blenderkit_data', path)
-                    path = os.path.join(cwd, 'objects', path)
+                    if "grocery_assets" in path:
+                        path = path.replace("grocery_assets/", "", 1)
+                    path = os.path.join(cwd, 'objects/indoor_objects', path)
                 scale = obj['scale']
                 pos = obj['pos']
                 pos[0] += offset[0]

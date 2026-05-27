@@ -14,6 +14,7 @@ import genesis as gs
 from genesis.utils.tools import FPSTracker
 from genesis.utils.misc import tensor_to_array
 from .tools.utils import get_assets_dir
+from .tools.asset_utils import get_asset_path
 import genesis.utils.geom as geom_utils
 from genesis.options import CoacdOptions
 from genesis.engine.entities.rigid_entity import RigidEntity
@@ -142,7 +143,7 @@ class VicoEnv:
 		self.obs = {i: {} for i in range(self.num_agents)}
 		self.obs['agent_list_to_update'] = [i for i in range(self.num_agents)]
 
-		self.scene_assets_dir = os.path.join(get_assets_dir(), f"ViCo/scene/v1/{scene}")
+		self.scene_assets_dir = get_asset_path(f"scene/v1/{scene}")
 		self.vehicles = []
 		self.enable_tm_debug = enable_tm_debug
 
