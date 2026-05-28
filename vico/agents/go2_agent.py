@@ -9,6 +9,7 @@ from .tour_agent import TourAgent
 from .agent_utils import get_robot_policy
 from .robot_agent import RobotAgent
 from ..tools.asset_utils import ensure_asset
+from ..tools.utils import get_assets_dir
 
 
 class Go2Agent(RobotAgent):
