@@ -9,6 +9,7 @@ import genesis as gs
 from .context import OutdoorObjectContext
 from .context import compose_euler
 from ...tools.utils import *
+from ...tools.asset_utils import ensure_asset
 
 def place_mesh(
 	env,
@@ -25,7 +26,7 @@ def place_mesh(
 ):
 	rotation = compose_euler(rotation, np.array([90.0, 0, 0]), unit='deg')
 	if not os.path.isabs(path):
-		path = os.path.join(get_assets_dir(), path)
+		path = ensure_asset(path)
 
 	x = env.add_entity(
 		type='object',
@@ -63,7 +64,8 @@ def place_urdf(
 	visualize_contact: bool = False,
 	vis_mode: Optional[str] = None,
 ):
-	# rotation = np.array([0.0, 0, 0])
+	if not os.path.isabs(path):
+		path = ensure_asset(path)
 
 	x = env.add_entity(
 		type='object',

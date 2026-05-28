@@ -8,7 +8,7 @@ import genesis as gs
 from .tour_agent import TourAgent
 from .agent_utils import get_robot_policy
 from .robot_agent import RobotAgent
-from ..tools.utils import get_assets_dir
+from ..tools.asset_utils import ensure_asset
 
 
 class Go2Agent(RobotAgent):
@@ -18,7 +18,7 @@ class Go2Agent(RobotAgent):
         self.num_single_obs = obs_cfg['num_obs']
         self.obs_history = torch.zeros([1, self.num_single_obs * obs_cfg['num_history_obs']],
                                        dtype=torch.float, device=gs.backend.name)
-        self.policy = get_robot_policy(os.path.join(get_assets_dir(), "ViCo/policies/go2.pt"))
+        self.policy = get_robot_policy(ensure_asset("policies/go2.pt"))
         super().__init__(name=name, pose=pose, info=info, sim_path=sim_path,
                          no_react=no_react, debug=debug, logger=logger)
 

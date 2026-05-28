@@ -240,7 +240,7 @@ class VicoEnv:
 			else:
 				# initialize agent as avatar
 				self.agents.append(self.add_avatar(name=self.agent_names[i],
-												   motion_data_path='ViCo/avatars/motions/motion.pkl',
+												   motion_data_path='avatars/motions/motion.pkl',
 												   skin_options={
 													   'glb_path': self.config['agent_skins'][i],
 													   'euler': (-90, 0, 90),
@@ -668,7 +668,7 @@ class VicoEnv:
 			outdoor_object_context = OutdoorObjectContext(
 				scene_name=self.scene_name,
 				objects_cfg_dir=os.path.join(scene_assets_dir, 'objects'),
-				assets_dir='ViCo/objects/outdoor_objects',
+				assets_dir='objects/outdoor_objects',
 				max_objects=self.outdoor_objects_max_num,
 				seed=self.seed,
 				terrain_height_field_path=f"{scene_assets_dir}/height_field.npz",

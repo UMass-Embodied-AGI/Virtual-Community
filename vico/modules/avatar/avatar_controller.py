@@ -8,7 +8,7 @@ import pickle as pkl
 import genesis as gs
 import genesis.utils.geom as geom_utils
 from genesis.utils.misc import get_cvx_cache_dir
-from ...tools.utils import get_assets_dir
+from ...tools.asset_utils import ensure_asset
 
 from .utils import *
 from ...tools.utils import *
@@ -90,7 +90,7 @@ class AvatarController():
         self.robot = AvatarRobot(env, skin_options, name)
         self.box = self.robot.box
 
-        motion_data_path = os.path.join(get_assets_dir(), motion_data_path)
+        motion_data_path = ensure_asset(motion_data_path)
         if AvatarController.full_motion_data_path is None:
             AvatarController.full_motion_data_path = f"{motion_data_path}.full"
 

@@ -86,7 +86,7 @@ class SimpleVicoEnv:
                                load_indoor_objects=load_indoor_objects)
         for i in range(self.num_agents):
             self.agents.append(self.add_avatar(name=self.agent_names[i],
-                                               motion_data_path='ViCo/avatars/motions/motion.pkl',
+                                               motion_data_path='avatars/motions/motion.pkl',
                                                skin_options={
                                                    'glb_path': self.config['agent_skins'][i],
                                                    'euler': (-90, 0, 90),

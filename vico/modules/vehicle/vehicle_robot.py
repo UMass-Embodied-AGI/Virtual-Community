@@ -2,13 +2,13 @@ import os
 import numpy as np
 import genesis as gs
 import genesis.utils.geom as geom_utils
-from ...tools.utils import get_assets_dir
+from ...tools.asset_utils import ensure_asset
 
 class VehicleRobot():
     def __init__(self, env, name, vehicle_asset_path, position=np.zeros(3, dtype=np.float64), rotation=np.zeros(3, dtype=np.float64), dt=0.01):
         self.dt = dt
         if not os.path.isabs(vehicle_asset_path):
-            vehicle_asset_path = os.path.join(get_assets_dir(), vehicle_asset_path)
+            vehicle_asset_path = ensure_asset(vehicle_asset_path)
 
         frictionless_rigid = gs.materials.Rigid(needs_coup=True, coup_friction=0.0)
         if ".glb" in vehicle_asset_path:

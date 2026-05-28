@@ -9,6 +9,7 @@ import genesis as gs
 import pickle
 
 from ...tools.utils import *
+from ...tools.asset_utils import ensure_asset
 from ...tools.road_annotation.retrieve_nearest_road import point_to_road_distance
 
 def euler_to_matrix(euler: np.ndarray, unit: str = 'rad') -> np.ndarray:
@@ -87,7 +88,7 @@ class OutdoorObjectContext:
     '''
 
     scene_name: str = 'NY'
-    assets_dir: str = 'ViCo/objects/outdoor_objects'
+    assets_dir: str = 'objects/outdoor_objects'
     objects_cfg_dir: str = 'assets/scene/v1/NY/objects'
     max_objects: Optional[Union[int, Dict[str, int]]] = None
     seed: int = 0
@@ -232,7 +233,7 @@ class OutdoorObjectContext:
             height = (height, height)
         
         import trimesh
-        mesh = trimesh.load_mesh(os.path.join(get_assets_dir(), obj_info['path']))
+        mesh = trimesh.load_mesh(ensure_asset(obj_info['path']))
         bbox = mesh.bounding_box.bounds
         obj_height = bbox[1][1] - bbox[0][1]
         rescaled_obj_height = np.clip(obj_height, height[0], height[1])

@@ -8,7 +8,7 @@ import pickle
 from .tour_agent import TourAgent
 from .agent_utils import get_robot_policy
 from .robot_agent import RobotAgent
-from ..tools.utils import get_assets_dir
+from ..tools.asset_utils import ensure_asset
 
 
 class H1Agent(RobotAgent):
@@ -19,7 +19,7 @@ class H1Agent(RobotAgent):
         self.num_single_obs = obs_cfg['num_obs']
         self.obs_history = torch.zeros([1, self.num_single_obs * 1],
                                        dtype=torch.float, device=gs.backend.name)
-        self.policy = get_robot_policy(os.path.join(get_assets_dir(), "ViCo/policies/h1.pt"))
+        self.policy = get_robot_policy(ensure_asset("policies/h1.pt"))
         super().__init__(name=name, pose=pose, info=info, sim_path=sim_path,
                          no_react=no_react, debug=debug, logger=logger)
 

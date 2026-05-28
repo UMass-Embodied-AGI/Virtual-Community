@@ -17,7 +17,7 @@ class SharedBicycles:
 		for i in range(self.num_bicycles):
 			self.bicycles.append(self.env.add_vehicle(
 					name="bicycle",
-					vehicle_asset_path="ViCo/cars/bike/bike.urdf",
+					vehicle_asset_path="cars/bike/bike.urdf",
 					ego_view_options=None,
 					dt=1e-2,
 					forward_speed_m_per_s=self.forward_speed_m_per_s,

@@ -1,7 +1,11 @@
 {
     "sim_name": "Simple_agent_num_2",
     "scene": "indoor_scenes/MVJWVGYKTLDAYAABAAAAAAQ8.json",
-    "scene_offset": [0.0, 0.0, 0.6],
+    "scene_offset": [
+        0.0,
+        0.0,
+        0.6
+    ],
     "agent_names": [
         "Alex Jefferson",
         "Brian Carter"
@@ -30,8 +34,8 @@
     "num_agents": 2,
     "sec_per_step": 1,
     "agent_skins": [
-        "ViCo/avatars/models/mixamo_Alex_Jefferson.glb",
-        "ViCo/avatars/models/mixamo_Brian_Carter.glb"
+        "avatars/models/mixamo_Alex_Jefferson.glb",
+        "avatars/models/mixamo_Brian_Carter.glb"
     ],
     "dt_control": [
         1.0,

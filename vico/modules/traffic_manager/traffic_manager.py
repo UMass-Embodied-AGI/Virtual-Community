@@ -66,7 +66,7 @@ class TrafficManager:
             self.add_vehicle(
                 vehicle=self.env.add_vehicle(
                     name=f"auto_vehicle_{i}",
-                    vehicle_asset_path="ViCo/cars/Car/OldCar.glb",
+                    vehicle_asset_path="cars/Car/OldCar.glb",
                     ego_view_options={
                         "res": (self.env.resolution, self.env.resolution),
                         "fov": 90,
@@ -89,7 +89,7 @@ class TrafficManager:
         self.bus = Bus(
             bus=self.env.add_vehicle(
                 name="bus",
-                vehicle_asset_path="ViCo/cars/Car/kozak_i_van2.glb",
+                vehicle_asset_path="cars/Car/kozak_i_van2.glb",
                 ego_view_options={
                     "res": (self.env.resolution, self.env.resolution),
                     "fov": 90,
@@ -124,7 +124,7 @@ class TrafficManager:
             simple_avatar = self.simple_avatars[i]
             self.add_avatar(
                 vehicle=self.env.add_avatar(name=f"auto_avatar_{i}",
-                    motion_data_path='ViCo/avatars/motions/motion.pkl',
+                    motion_data_path='avatars/motions/motion.pkl',
                     skin_options={
                         'glb_path': self.env.config['agent_skins'][0],
                         'euler': (-90, 0, 90),

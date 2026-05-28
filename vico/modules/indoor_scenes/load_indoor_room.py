@@ -3,7 +3,7 @@ import genesis as gs
 import psutil
 import json
 import numpy as np
-from ...tools.utils import get_assets_dir
+from ...tools.asset_utils import ensure_asset
 from .usd_scene import place_usd_scene_with_ratio
 from .architect_scene import load_indoor_scene
 from ...tools.constants import ASSETS_PATH
@@ -53,7 +53,7 @@ def load_indoor_room(env, scene_path: str, offset: list[float], place_name: str,
             active_places_info = {
                 'init_avatar_poses': indoor_scene.get("avatar_pos", [])
             }
-            usd_file = os.path.join(get_assets_dir(), f"ViCo/scene/commercial_scenes/scenes/{indoor_scene_name}_usd/start_result_raw.usd")
+            usd_file = ensure_asset(f"scene/commercial_scenes/scenes/{indoor_scene_name}_usd/start_result_raw.usd")
             place_usd_scene_with_ratio(usd_file,
                         env,
                         global_pos=offset,

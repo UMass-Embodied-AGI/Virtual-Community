@@ -3,7 +3,7 @@ import numpy as np
 import genesis as gs
 import genesis.utils.geom as geom_utils
 from .utils import *
-from ...tools.utils import get_assets_dir
+from ...tools.asset_utils import ensure_asset
 
 from scipy.spatial.transform import Rotation as R
 
@@ -29,7 +29,7 @@ class AvatarRobot:
         if skin_options is not None:
             glb_path = skin_options['glb_path']
             if not os.path.isabs(glb_path):
-                glb_path = os.path.join(get_assets_dir(), glb_path)
+                glb_path = ensure_asset(glb_path)
             self.skin = env.add_entity(
                 type="avatar",
                 name=name,

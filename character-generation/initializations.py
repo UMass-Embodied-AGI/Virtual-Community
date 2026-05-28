@@ -88,11 +88,11 @@ config = {
     "curr_time": "February 1, 2023, 06:00:00",
     "sec_per_step": 1,
     "agent_skins": [
-        "ViCo/avatars/models/mixamo_Brian_merge.glb",
-        "ViCo/avatars/models/celebrity_Elon_Musk.glb",
-        "ViCo/avatars/models/mixamo_Chad_merge.glb",
-        "ViCo/avatars/models/celebrity_Joshua_Tenenbaum.glb",
-        "ViCo/avatars/models/mixamo_Kate_merge.glb"
+        "avatars/models/mixamo_Brian_merge.glb",
+        "avatars/models/celebrity_Elon_Musk.glb",
+        "avatars/models/mixamo_Chad_merge.glb",
+        "avatars/models/celebrity_Joshua_Tenenbaum.glb",
+        "avatars/models/mixamo_Kate_merge.glb"
     ],
     "step": 0
 }

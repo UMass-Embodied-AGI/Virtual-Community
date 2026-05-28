@@ -941,7 +941,7 @@ class CharacterGen:
         this_config["groups"] = groups
 
         for character_name in character_names:
-            this_config["agent_skins"].append(f"ViCo/avatars/models/{self.character_name_to_skin_info[character_name]['skin_file']}")
+            this_config["agent_skins"].append(f"avatars/models/{self.character_name_to_skin_info[character_name]['skin_file']}")
         structure_to_create[f"assets/scenes/{middle_path}/agents_num_{len(character_names)}"] = [{"file_name": "config.json", "file_content": this_config}]
         create_folders_and_files(structure_to_create)
         # all_known_places_set_dict = {}

@@ -92,10 +92,10 @@ def main():
     avatars = {}
     for char_name, skin_dict in tqdm(char2skin.items(), desc="Loading characters"):
         try:
-            glb_path = f'ViCo/avatars/models/{skin_dict["skin_file"]}'
+            glb_path = f'avatars/models/{skin_dict["skin_file"]}'
             humanoid = scene.add_avatar(
                 name=char_name,
-                motion_data_path="ViCo/avatars/motions/motion.pkl",
+                motion_data_path="avatars/motions/motion.pkl",
                 skin_options={
                     'glb_path': glb_path,
                     'euler': (-90, 0, 90),

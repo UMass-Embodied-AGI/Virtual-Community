@@ -16,7 +16,7 @@ import tqdm
 import traceback
 from collections import defaultdict
 import math
-from multiprocessing import Lock
+from threading import Lock
 
 def get_assets_dir():
 	return os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets")

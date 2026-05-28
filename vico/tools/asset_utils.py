@@ -58,3 +58,31 @@ def get_asset_path(
         revision=revision,
     )
     return str(_VICO_ASSETS_DIR / asset_name)
+
+
+def ensure_asset(asset_name: str) -> str:
+    """Download a ViCo asset lazily and return its absolute local path.
+
+    - URDFs: downloads the entire parent directory (they reference sibling files).
+    - Everything else: downloads the single file; if the file is still missing
+      afterward (e.g. a texture inside a UUID bundle), retries by downloading
+      the parent directory.
+
+    Args:
+        asset_name: Relative path within the ViCo assets repo (no leading ViCo/)
+
+    Returns:
+        Absolute path to the local asset file
+    """
+    local_path = _VICO_ASSETS_DIR / asset_name
+    if local_path.exists():
+        return str(local_path)
+
+    if asset_name.endswith(".urdf"):
+        get_asset_path(asset_name.rsplit("/", 1)[0])
+    else:
+        get_asset_path(asset_name, pattern_is_dir=False)
+        if not local_path.exists() and "/" in asset_name:
+            get_asset_path(asset_name.rsplit("/", 1)[0])
+
+    return str(local_path)

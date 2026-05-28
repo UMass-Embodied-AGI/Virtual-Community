@@ -19,6 +19,7 @@ import genesis as gs
 import genesis.utils.geom as geom_utils
 import glob
 from vico.tools.utils import get_assets_dir
+from vico.tools.asset_utils import ensure_asset
 from utils import load_height_field, get_height_at
 # from modules.avatar.avatar_robot import AvatarRobot
 
@@ -132,6 +133,8 @@ def add_agent_skins(scene, config, hf):
     avatar_entities = []
     
     for i, (pose, skin_path) in enumerate(zip(agent_poses, agent_skins)):
+        if not os.path.isabs(skin_path):
+            skin_path = ensure_asset(skin_path)
         if len(pose) >= 6:  # Need at least position and rotation
             # Extract position and rotation from pose
             pos = np.array(pose[:3], dtype=np.float64)
