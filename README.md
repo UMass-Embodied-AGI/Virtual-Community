@@ -56,8 +56,9 @@ Virtual Community is an open-world platform that simulates human-robot coexisten
 
 ## News
 
+- [2026-05-28] All assets are now hosted on HuggingFace at [Virtual-Community-AI/assets](https://huggingface.co/datasets/Virtual-Community-AI/assets) and are downloaded automatically on first use.
 - [2026-05-24] Codebase restructured into the `vico` Python package; assets moved to `vico/assets/`.
-- [2025-05-23] Virtual Community now supports user controlled agents and improves project structure for easier development [uv management and importable vico package].
+- [2026-05-23] Virtual Community now supports user controlled agents and improves project structure for easier development [uv management and importable vico package].
 - [2026-01-26] Virtual Community is accepted by ICLR 2026.
 - [2025-06-19] We have released the Virtual Community! Check out the [project website](https://virtual-community-ai.github.io/) and our [paper](https://virtual-community-ai.github.io/paper.pdf) for more details.
 
@@ -92,7 +93,7 @@ Assets are hosted on HuggingFace at [Virtual-Community-AI/assets](https://huggin
 To download them manually in advance:
 
 ```bash
-python -c "from vico.tools.hf_assets import ensure_vico_assets; ensure_vico_assets()"
+python -c "from vico.tools.asset_utils import download_all_assets; download_all_assets()"
 ```
 
 Assets include:

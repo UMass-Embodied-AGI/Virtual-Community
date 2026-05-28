@@ -60,6 +60,17 @@ def get_asset_path(
     return str(_VICO_ASSETS_DIR / asset_name)
 
 
+def download_all_assets() -> None:
+    """Download all ViCo assets from HuggingFace in one shot."""
+    from huggingface_hub import snapshot_download
+
+    snapshot_download(
+        repo_type="dataset",
+        repo_id=VICO_ASSETS_REPO,
+        local_dir=str(_VICO_ASSETS_DIR),
+    )
+
+
 def ensure_asset(asset_name: str) -> str:
     """Download a ViCo asset lazily and return its absolute local path.
 
