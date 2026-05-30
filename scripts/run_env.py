@@ -10,7 +10,6 @@ import genesis as gs
 
 from vico.env import VicoEnv
 from vico.agents import get_agent_cls, AgentProcess
-from vico.agents.keystroke_counter import KeyCode, KeystrokeCounter
 from vico.tools.utils import get_assets_dir, atomic_save, json_converter
 
 parser = argparse.ArgumentParser()
@@ -208,6 +207,7 @@ if user_controlled_index is not None:
         gs.logger.warning("User control disabled — running in observe-only mode.")
     else:
         try:
+            from vico.agents.keystroke_counter import KeyCode, KeystrokeCounter
             key_counter = KeystrokeCounter()
             key_counter.__enter__()
             gs.logger.info("Keyboard listener started (subprocess). Use arrow keys to control the agent.")

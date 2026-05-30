@@ -27,7 +27,6 @@ from .tools.constants import ASSETS_PATH, LIGHTS, ENV_OTHER_METADATA
 from .tools.utils import *
 from .modules import *
 
-from .agents.keystroke_counter import KeyCode, KeystrokeCounter
 from .agents import get_agent_cls as _default_get_agent_cls
 
 class VicoEnv:
