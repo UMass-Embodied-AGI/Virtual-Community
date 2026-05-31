@@ -4,9 +4,9 @@ from datetime import datetime
 import numpy as np
 import traceback
 import logging
-# import torch.multiprocessing as mp
-# ctx = mp.get_context('spawn')
-import multiprocessing as mp # todo: replace with torch.multiprocessing
+import multiprocessing as mp
+
+_ctx = mp.get_context('spawn')
 
 from ..tools.utils import atomic_save, json_converter
 
@@ -97,7 +97,7 @@ class Agent:
 		return f"Agent {self.name} at {self.pose}"
 
 
-class AgentProcess(mp.Process):
+class AgentProcess(_ctx.Process):
 	def __init__(self, agent_cls: type[Agent], name: str, **kwargs: dict):
 		super().__init__(daemon=True)
 		self.agent_cls = agent_cls
@@ -106,9 +106,9 @@ class AgentProcess(mp.Process):
 		self.multi_process: bool = kwargs.pop("multi_process", True)
 		self.sim_path: str = kwargs.get("sim_path", "curr_sim")
 		self.kwargs = kwargs
-		self.input_queue = mp.Queue()
-		self.action_queue = mp.Queue()
-		self.utterance_queue = mp.Queue()
+		self.input_queue = _ctx.Queue()
+		self.action_queue = _ctx.Queue()
+		self.utterance_queue = _ctx.Queue()
 		if not self.multi_process:
 			self.agent = self.create_agent()
 		else:

@@ -49,6 +49,10 @@ def get_asset_path(
                 return os.path.join(dir_path, asset_name)
 
     # 2. Download from HuggingFace (incremental caching via snapshot_download)
+    local_path = _VICO_ASSETS_DIR / asset_name
+    if local_path.exists():
+        return str(local_path)
+
     allow_patterns = f"{asset_name}/*" if pattern_is_dir else asset_name
     snapshot_download(
         repo_type="dataset",
@@ -57,7 +61,7 @@ def get_asset_path(
         local_dir=str(_VICO_ASSETS_DIR),
         revision=revision,
     )
-    return str(_VICO_ASSETS_DIR / asset_name)
+    return str(local_path)
 
 
 def download_all_assets() -> None:
@@ -87,6 +91,12 @@ def ensure_asset(asset_name: str) -> str:
     """
     local_path = _VICO_ASSETS_DIR / asset_name
     if local_path.exists():
+        # OBJ files reference sibling .mtl and texture files — download the
+        # parent directory if those companions are missing.
+        if asset_name.endswith(".obj") and "/" in asset_name:
+            mtl_name = local_path.stem + ".mtl"
+            if not (local_path.parent / mtl_name).exists():
+                get_asset_path(asset_name.rsplit("/", 1)[0])
         return str(local_path)
 
     if asset_name.endswith(".urdf"):
