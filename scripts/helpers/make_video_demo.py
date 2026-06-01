@@ -143,7 +143,7 @@ def process_frame_agents(frame_idx, args, names_order, name_to_color, agent_cam_
         dynamic_clips.append(ImageClip(avatar_images[name]).with_position((pos[0], pos[1])).with_duration(1/args.fps).resized(width=130))
         pos = avatar_positions[i]
         text_clips.append(
-            TextClip(font=os.path.join(os.path.dirname(__file__), "misc/OpenSans-Regular.ttf"), text=name, font_size=20, color=(name_color_bgr_255[name][0], name_color_bgr_255[name][1], name_color_bgr_255[name][2]))
+            TextClip(font=os.path.join(get_assets_dir(), "OpenSans-Regular.ttf"), text=name, font_size=20, color=(name_color_bgr_255[name][0], name_color_bgr_255[name][1], name_color_bgr_255[name][2]))
             .with_position((pos[0] - 10, pos[1] - 50))
             .with_duration(1/args.fps)
         )
@@ -160,18 +160,18 @@ def process_frame_agents(frame_idx, args, names_order, name_to_color, agent_cam_
         pos = selected_agents_positions[i]
         dynamic_clips.append(ImageClip(agent_cam_images[name][frame_idx]).with_position((pos[0], pos[1])).with_duration(1/args.fps).resized(width=350))
         # text_clips.append(
-        #     TextClip(font=os.path.join(os.path.dirname(__file__), "misc/OpenSans-Regular.ttf"), text=wrapped_text_upper[name], font_size=15, color=(255, 255, 255))
+        #     TextClip(font=os.path.join(get_assets_dir(), "OpenSans-Regular.ttf"), text=wrapped_text_upper[name], font_size=15, color=(255, 255, 255))
         #     .with_position((pos[0], pos[1] - 50))
         #     .with_duration(1/args.fps)
         # )
         text_clips.append(
-            TextClip(font=os.path.join(os.path.dirname(__file__), "misc/OpenSans-Regular.ttf"), text=wrapped_text_bottom[name], font_size=15, color=(255, 255, 255))
+            TextClip(font=os.path.join(get_assets_dir(), "OpenSans-Regular.ttf"), text=wrapped_text_bottom[name], font_size=15, color=(255, 255, 255))
             .with_position((pos[0], pos[1] + 350))
             .with_duration(1/args.fps)
         )
     
     text_clips.append(
-        TextClip(font=os.path.join(os.path.dirname(__file__), "misc/OpenSans-Regular.ttf"), text="Time: " + str(current_time), font_size=50, color=(255, 255, 255))
+        TextClip(font=os.path.join(get_assets_dir(), "OpenSans-Regular.ttf"), text="Time: " + str(current_time), font_size=50, color=(255, 255, 255))
         .with_position((890, 400))
         .with_duration(1/args.fps)
     )

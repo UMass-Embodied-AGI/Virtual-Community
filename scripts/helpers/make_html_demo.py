@@ -5,7 +5,7 @@ from collections import defaultdict
 from tqdm import tqdm
 import matplotlib.colors as mcolors
 
-from utils import merge_step_files
+from vico.tools.utils import merge_step_files, get_assets_dir
 
 def map_lang_colors_to_rgb(lang_colors):
     return [mcolors.to_rgb(c) for c in lang_colors]
@@ -95,17 +95,18 @@ def main():
     build_lookup(args.output_dir, agent_names, num_steps,
                  "tp" if args.type == "ego" else "ego")
 
-    template_path = os.path.join(os.path.dirname(__file__), "template.html")
+    template_path = os.path.join(get_assets_dir(), "template.html")
     with open(template_path, encoding="utf-8") as f:
         html = f.read()
 
-    # Convert filesystem paths to server-root-relative URLs for python -m http.server
-    repo_root = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    # Convert filesystem paths to server-root-relative URLs for python -m http.server.
+    # Use the common ancestor of the assets dir and the output dir as the server root so
+    # neither path ever requires ".." traversal (which http.server strips for security).
+    output_dir_abs = os.path.abspath(args.output_dir)
+    repo_root = os.path.commonpath([get_assets_dir(), output_dir_abs])
 
     def web_path(p: str) -> str:
         return "/" + os.path.relpath(os.path.abspath(p), repo_root).replace(os.sep, "/")
-
-    output_dir_abs = os.path.abspath(args.output_dir)
 
     substitutions = {
         "$OutputFolderPath$": web_path(output_dir_abs),
@@ -114,9 +115,9 @@ def main():
         "$TpegoFolderPath$": web_path(os.path.join(output_dir_abs, "ego")),
         "$tpFolderPath$": web_path(os.path.join(output_dir_abs, "tp")),
         "$StepsFolderPath$": web_path(os.path.join(output_dir_abs, "steps")),
-        "$AvatarImgsPath$": web_path(os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets/imgs/avatars")),
-        "$GlobalCameraParameterPath$": web_path(os.path.join(os.path.dirname(os.path.dirname(__file__)), f"assets/scenes/{args.scene}/global_cam_parameters.json")),
-        "$GlobalImagePath$": web_path(os.path.join(os.path.dirname(os.path.dirname(__file__)), f"assets/scenes/{args.scene}/global.png")),
+        "$AvatarImgsPath$": web_path(os.path.join(get_assets_dir(), "imgs/avatars")),
+        "$GlobalCameraParameterPath$": web_path(os.path.join(get_assets_dir(), f"scenes/{args.scene}/global_cam_parameters.json")),
+        "$GlobalImagePath$": web_path(os.path.join(get_assets_dir(), f"scenes/{args.scene}/global.png")),
         "$FPS$": str(args.fps),
     }
     for key, val in substitutions.items():
@@ -127,8 +128,8 @@ def main():
         f.write(html)
     print(f"Demo HTML written to  -> {out_html}\n")
 
-    print("Serve with:")
-    print("    python -m http.server")
+    print("Serve with (from any directory):")
+    print(f"    python -m http.server --directory {repo_root}")
     print(f"and open:")
     print(
         f"    http://localhost:8000{web_path(output_dir_abs)}/demo.html")

@@ -20,7 +20,7 @@ import genesis.utils.geom as geom_utils
 import glob
 from vico.tools.utils import get_assets_dir
 from vico.tools.asset_utils import ensure_asset
-from utils import load_height_field, get_height_at
+from vico.tools.utils import load_height_field, get_height_at
 # from modules.avatar.avatar_robot import AvatarRobot
 
 
