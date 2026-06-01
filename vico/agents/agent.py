@@ -217,7 +217,7 @@ class AgentProcess(_ctx.Process):
 	
 	def close(self):
 		if self.multi_process:
-			if self.agent.is_alive():
+			if self.agent is not None and self.agent.is_alive():
 				self.agent.terminate()
 
 
