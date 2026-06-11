@@ -141,9 +141,14 @@ def main():
 
             depth_threshold = 10.0
             mask = depth <= depth_threshold
-            rgb = rgb.copy()
-            rgb[~mask] = 0
-            rgba = rgb[:, :, [2, 1, 0]]
+
+            # Enhance brightness by 20%, clamped to valid range
+            rgb_bright = np.clip(rgb.astype(np.float32) * 1.2, 0, 255).astype(np.uint8)
+
+            # Build BGRA image: transparent background, opaque foreground
+            bgr = rgb_bright[:, :, [2, 1, 0]]
+            alpha = (mask * 255).astype(np.uint8)
+            rgba = np.dstack([bgr, alpha])
 
             relative_img_save_path = os.path.join(img_save_dir, f"{char_name}_{idx}_rgb.png")
             success = cv2.imwrite(relative_img_save_path, rgba)

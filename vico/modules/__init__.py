@@ -5,4 +5,5 @@ from .outdoor_objects import *
 from .avatar import *
 from .vehicle import *
 from .traffic_manager import *
+from .MapTool import *
 from .robot import ROBOT_CONTROLLERS, ROBOT_POSITION_OFFSETS, ROBOT_CONFIGS

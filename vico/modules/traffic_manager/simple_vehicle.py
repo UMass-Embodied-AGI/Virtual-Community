@@ -4,12 +4,13 @@ class SimpleVehicle:
     '''
     used in traffic manager
     '''
-    def __init__(self, id, init_pos, init_rot, init_road, init_s, std_speed=5.):
+    def __init__(self, id, init_pos, init_rot, init_road, init_s, init_lane, std_speed=5.):
         self.id = id
         self.pos = init_pos
         self.rot = init_rot
         self.road = init_road
         self.s = init_s
+        self.lane = init_lane
         self.action = {"type": "stop"}
         self.std_speed = std_speed
 
@@ -19,12 +20,13 @@ class SimpleVehicle:
     def get_pos(self):
         return self.pos
 
-    def set_loc(self, road, s):
+    def set_loc(self, road, s, lane=0):
         self.road=road
         self.s=s
+        self.lane=lane
 
     def get_loc(self):
-        return self.road, self.s
+        return self.road, self.s, self.lane
     
     def set_rot(self, rot):
         self.rot=rot

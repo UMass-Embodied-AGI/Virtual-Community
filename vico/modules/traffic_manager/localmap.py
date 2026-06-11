@@ -3,10 +3,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 import os
+import copy
+from copy import deepcopy
 from pathlib import Path
 import pickle
 import random
 import pyproj
+import argparse
+import json
+from ...tools.utils import get_assets_dir
 
 def cubic_func(t, shape):
     u = shape['aU']+shape['bU']*t+shape['cU']*(t**2)+shape['dU']*(t**3)  # Cubic function for u
@@ -467,16 +472,46 @@ class LocalMap:
                 else:
                     geometry[idx]['type']='unknown'
             # get lane information
-            lanes = [
-                {
-                    'id': int(lane.get('id')), 
-                    'type': lane.get('type'), 
-                    'level': lane.get('level'), 
-                    'width': float(lane.find('width').get('a'))+float(lane.find('roadMark').get('width'))
-                }
-                for lane in road.findall('lanes/laneSection/right/lane')
-            ]
+            lanes=[]
+            for lane in road.findall('lanes/laneSection/right/lane'):
+                lanes.append(
+                    {
+                        'id': -int(lane.get('id'))-1, 
+                        'type': lane.get('type'), 
+                        'level': lane.get('level'), 
+                        'width': float(lane.find('width').get('a'))+float(lane.find('roadMark').get('width')),
+                        'link': {
+                            'predecessor': [],
+                            'successor': []
+                        }
+                    }
+                )
+                assert lanes[-1]['id']==len(lanes)-1
+                if junction!="-1": # according to xodr, only road in junctions has these property
+                    assert lane.find('link/predecessor') is not None
+                    predecessor_id=predecessor.get("elementId")
+                    successor_id=successor.get("elementId")
+                    lanes[-1]['link']={
+                        'predecessor': [{'road_id':predecessor_id, 'lane_id':-int(lane.find('link/predecessor').get('id'))-1}],
+                        'successor': [{'road_id':successor_id, 'lane_id':-int(lane.find('link/successor').get('id'))-1}]
+                    }
+                    
+                    assert self.roads[predecessor_id]['junction']=="-1"
+                    for idx in range(len(self.roads[predecessor_id]['lanes'])):
+                        if self.roads[predecessor_id]['lanes'][idx]['id']==lanes[-1]['link']['predecessor'][0]['lane_id']:
+                            self.roads[predecessor_id]['lanes'][idx]['link']['successor'].append(
+                                {'road_id': id, 'lane_id':lanes[-1]['id']})
+                    assert self.roads[successor_id]['junction']=="-1"
+                    for idx in range(len(self.roads[successor_id]['lanes'])):
+                        if self.roads[successor_id]['lanes'][idx]['id']==lanes[-1]['link']['successor'][0]['lane_id']:
+                            self.roads[successor_id]['lanes'][idx]['link']['predecessor'].append(
+                                {'road_id': id, 'lane_id':lanes[-1]['id']})
+                else:
+                    if lane.find('link/predecessor') is not None: print(id)
+                    assert lane.find('link/predecessor') is None
             lane_offset = float(road.find('lanes/laneOffset').get('a')) if road.find('lanes/laneOffset') is not None else 0.
+
+            # adding road information to self.roads
             self.roads[id]={
                 'name': name, 
                 'length': length, 
@@ -501,6 +536,11 @@ class LocalMap:
                 for conn in junc.findall('connection')
             ]
             self.junctions[id]={'name':name, 'id': id, 'connections': connections}
+
+        self.printable_roads = copy.deepcopy(self.roads)
+        for road in self.printable_roads:
+            self.printable_roads[road]["predecessor"]=self.get_previous_roads(road)
+            self.printable_roads[road]['successor']=self.get_next_roads(road)
         
         self.valid_road=self.cut_branch()
         self.main_roads=[road for road in self.main_roads if road in self.valid_road]
@@ -739,6 +779,19 @@ class LocalMap:
         if not next_roads:
             return None
         return random.choice(next_roads)
+    
+    def get_next_roads_and_lanes(self, road_id, lane_id):
+        '''
+        This function is used to select next roads for vehicles (not for pedestrians currently).
+        '''
+        assert road_id in self.valid_road
+        lane=self.roads[road_id]['lanes'][lane_id]
+        next_roads_and_lanes=[road for road in lane['link']['successor'] if road['road_id'] in self.valid_road]
+        while len(next_roads_and_lanes)==0:
+            lane_id=(lane_id+1)%len(self.roads[road_id]['lanes'])
+            lane=self.roads[road_id]['lanes'][lane_id]
+            next_roads_and_lanes=[road for road in lane['link']['successor'] if road['road_id'] in self.valid_road]
+        return next_roads_and_lanes
         
     def get_junction(self, road_id):
         return self.roads[road_id]['junction']
@@ -751,3 +804,20 @@ class PedestrianMap(BaseMap):
     def get_pedestrian_paths(self):
         """Return all paths designated for pedestrians."""
         return self.pedestrian_paths
+    
+
+if __name__ == "__main__" :
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--scene", '-s', type=str, required=True)
+    args = parser.parse_args()
+    scene_dir = f"{get_assets_dir()}/scenes/{args.scene}"
+    if not os.path.exists(f"{scene_dir}/road_data/road_data.xodr"):
+        print(f"{scene_dir}/road_data/road_data.xodr not exist!")
+        exit()
+    with open(f"{scene_dir}/raw/center.txt", "r") as file:
+        for line in file:
+            ref_lat, ref_lon = line.strip().split()
+        ref_lat, ref_lon = float(ref_lat), float(ref_lon)
+    local_map=LocalMap(file_path=f"{scene_dir}/road_data/road_data.xodr", terrain_height_path=None, ref_lat=ref_lat, ref_lon=ref_lon)
+    with open("local_map_instance.json", "w") as f:
+        json.dump(local_map.printable_roads, f, indent=2)

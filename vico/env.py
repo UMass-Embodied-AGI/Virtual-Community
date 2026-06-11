@@ -27,7 +27,6 @@ from .tools.constants import ASSETS_PATH, LIGHTS, ENV_OTHER_METADATA
 from .tools.utils import *
 from .modules import *
 
-from .agents.keystroke_counter import KeyCode, KeystrokeCounter
 from .agents import get_agent_cls as _default_get_agent_cls
 
 class VicoEnv:
@@ -296,6 +295,15 @@ class VicoEnv:
 		self.scene.reset()
 
 		self.traffic_manager.init_post_scene_build()
+
+		self.map_tool = MapTool(
+			scene_name=self.scene_name,
+			pose=None,
+			place_metadata=self.place_metadata,
+			building_metadata=self.building_metadata,
+			bus=self.traffic_manager.bus,
+			logger=gs.logger,
+		)
 
 		# forward pass
 		if self.enable_gt_segmentation:
@@ -921,6 +929,51 @@ class VicoEnv:
 			agent.play_animation(name=action['arg1'])
 		elif action['type'] == 'wait':
 			return
+		elif action['type'] == 'query_map_tool':
+			if agent.robot.base_state == AvatarState.SLEEPING:
+				agent.robot.base_state = AvatarState.STANDING
+			info = self.agent_infos[agent_id]
+			agent_pos = self.config['agent_poses'][agent_id][:3]
+			outdoor_pos = (
+				self.config['agent_poses'][agent_id][:3]
+				if info['current_building'] == 'open space'
+				else info['outdoor_pose'][:3]
+			)
+			arg1 = action['arg1']
+			if arg1 == 'query_place':
+				answer = self.map_tool.query_place(action['arg2'])
+			elif arg1 == 'query_nearby':
+				answer = self.map_tool.query_nearby(action['arg2'], action['arg3'])
+			elif arg1 == 'query_route':
+				answer = self.map_tool.query_route(outdoor_pos, goal_place=action['arg2'], curr_time=self.curr_time)
+			elif arg1 == 'query_grid_map':
+				answer = self.map_tool.query_grid_map()
+			elif arg1 == 'query_grid_map_image':
+				answer = self.map_tool.get_grid_map_image(
+					circle_coords=action['arg2'],
+					route_coords=action['arg3'],
+					agent_coords=[outdoor_pos],
+					target_coords=[action['arg3'][-1]],
+				)
+			elif arg1 == 'query_refine_route':
+				answer = self.map_tool.refine_route(
+					route=action['arg4'],
+					curr_time=self.curr_time,
+					circle_coords=action['arg2'],
+					route_coords=action['arg3'],
+					agent_coords=[outdoor_pos],
+					target_coords=[action['arg3'][-1]],
+				)
+			else:
+				gs.logger.warning(f"Unknown query_map_tool arg1: {arg1!r}; ignored.")
+				return
+			deleted = self.events.add(
+				type="app message", pos=agent_pos, r=1, content=answer,
+				priority=random.randint(0, 100),
+				subject=self.agent_names[agent_id], predicate="get", object="app response",
+			)
+			for subject in deleted:
+				self.agents[self.agent_names.index(subject)].robot.action_status = ActionStatus.FAIL
 		else:
 			raise NotImplementedError(f"agent action type {action['type']} is not supported")
 
